@@ -346,6 +346,7 @@ namespace Calculator3
         {
             Form2 newform2 = new Form2();
             newform2.ShowDialog();
+            this.Close();
         }
     }
 }

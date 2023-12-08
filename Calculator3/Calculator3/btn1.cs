@@ -39,6 +39,7 @@ namespace Calculator3
             {
                 txtResult.Text = string.Format("{0:N0}", v);
             }
+
         }
     }
 }
