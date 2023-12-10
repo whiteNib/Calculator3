@@ -39,3 +39,14 @@ C:\Users\SW DEV2\Desktop\Calculator3\Calculator3\obj\Debug\Calculator3.Propertie
 C:\Users\SW DEV2\Desktop\Calculator3\Calculator3\obj\Debug\Calculator3.csproj.GenerateResource.Cache
 C:\Users\SW DEV2\Desktop\Calculator3\Calculator3\bin\Debug\Calculator3.exe
 C:\Users\SW DEV2\Desktop\Calculator3\Calculator3\bin\Debug\Calculator3.pdb
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\bin\Debug\Calculator3.exe.config
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\bin\Debug\Calculator3.exe
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\bin\Debug\Calculator3.pdb
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\obj\Debug\Calculator3.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\obj\Debug\Calculator3.Form1.resources
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\obj\Debug\Calculator3.Form2.resources
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\obj\Debug\Calculator3.Properties.Resources.resources
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\obj\Debug\Calculator3.csproj.GenerateResource.cache
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\obj\Debug\Calculator3.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\obj\Debug\Calculator3.exe
+C:\Users\USER\Desktop\Calculator3-main\Calculator3-main\Calculator3\Calculator3\obj\Debug\Calculator3.pdb

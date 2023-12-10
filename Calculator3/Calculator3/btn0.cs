@@ -9,6 +9,7 @@ namespace Calculator3
 {
     public static class Btn0Handler
     {
+
         public static void HandleClick(object sender, EventArgs e, TextBox txtResult, bool opFlag, bool memFlag)
         {
             if (txtResult.Text == "0" || opFlag == true || memFlag == true)
@@ -40,5 +41,7 @@ namespace Calculator3
                 txtResult.Text = string.Format("{0:N0}", v);
             }
         }
+
+        
     }
 }

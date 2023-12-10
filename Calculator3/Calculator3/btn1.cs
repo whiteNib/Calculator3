@@ -27,7 +27,7 @@ namespace Calculator3
             int pos = 0;
             if (txtResult.Text.Contains("."))
             {
-                pos = txtResult.Text.Length - txtResult.Text.IndexOf(".");
+                pos = txtResult.Text.Length - txtResult.Text.IndexOf("."); // 123.456 이면 pos =3 (소수점 아래 숫자 개수)
                 if (pos == 1)
                 {
                     return;

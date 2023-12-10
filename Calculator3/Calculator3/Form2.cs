@@ -8,16 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Numerics;
 
 namespace Calculator3
 {
     public partial class Form2 : Form
     {
         private bool isPanel2Visible = false;
-        public double lValue;
+        public long lValue;
         public char op = '\0';
         public bool opFlag = false;
-        public double memory;
+        public long memory;
         public bool memFlag = false;
 
         public Form2()
@@ -95,7 +96,7 @@ namespace Calculator3
             tableLayoutPanel3.Height = y3; 
             int y4 = Convert.ToInt32(this.Height * 0.2);
             tableLayoutPanel4.Height = y4;
-            int y5 = Convert.ToInt32(this.Height * 0.45);
+            int y5 = Convert.ToInt32(this.Height * 0.55);
             tableLayoutPanel5.Height = y5;
             //Console.WriteLine(y);
             txtResult.Location = new Point(0, y4);
@@ -204,20 +205,27 @@ namespace Calculator3
 
             toHEX();
         }
-       
+
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            Btn1Handler.HandleClick(sender, e, txtResult, opFlag, memFlag);
-            opFlag = false;
-            memFlag = false;
+            if (txtResult.Text == "0" || opFlag || memFlag)
+            {
+                txtResult.Text = "1";
+                opFlag = false;
+                memFlag = false;
+            }
+            else
+            {
+                txtResult.Text += "1";
+            }
+
             btnHEX.Text += "1";
             btnDEC.Text += "1";
             btnOCT.Text += "1";
             btnBIN.Text += "1";
 
             strText = txtResult.Text;
-            strNum = "";
             strNum = Regex.Replace(strText, @"\D", "");
             hex = Convert.ToInt64(strNum);
             dec = Convert.ToInt64(strNum);
@@ -225,6 +233,7 @@ namespace Calculator3
             bin = Convert.ToInt64(strNum);
 
             toHEX();
+            
         }
 
         private void btn2_Click(object sender, EventArgs e)
@@ -392,16 +401,88 @@ namespace Calculator3
             oct = Convert.ToInt64(strNum);
             bin = Convert.ToInt64(strNum);
 
+            
             toHEX();
         }
 
         public void toHEX()
         {
-            btnHEX.Text = "HEX  " + Convert.ToString(hex, 16);
+            // 16진수 변환
+            string hexString = hex.ToString("X"); // 4자리 이상도 모두 포함하기 위해 "X" 사용
+            StringBuilder formattedHex = new StringBuilder();
+
+            int digitCount = 0;
+
+            for (int i = hexString.Length - 1; i >= 0; i--)
+            {
+                formattedHex.Insert(0, hexString[i]);
+
+                // 4자리 이상의 자릿수에 대해서 공백 추가
+                if (++digitCount > 3 && i > 0)
+                {
+                    formattedHex.Insert(0, " ");
+                    digitCount = 0;
+                }
+            }
+
+            int octDigitCount = 0;
+            StringBuilder formattedOct = new StringBuilder();
+
+            // 10진수 변환
+            string decString = Convert.ToString(hex, 10);
+            StringBuilder formattedDec = new StringBuilder();
+
+            int decDigitCount = 0;
+
+            for (int i = decString.Length - 1; i >= 0; i--)
+            {
+                formattedDec.Insert(0, decString[i]);
+
+                // 3자리 이상의 자릿수에 대해서 쉼표 추가
+                if (++decDigitCount > 2 && i > 0)
+                {
+                    formattedDec.Insert(0, ",");
+                    decDigitCount = 0;
+                }
+            }
+
+            // 8진수 변환
+            string octString = Convert.ToString(hex, 8);
+
+            for (int i = octString.Length - 1; i >= 0; i--)
+            {
+                formattedOct.Insert(0, octString[i]);
+
+                // 3자리 이상의 자릿수에 대해서 공백 추가
+                if (++octDigitCount > 2 && i > 0)
+                {
+                    formattedOct.Insert(0, " ");
+                    octDigitCount = 0;
+                }
+            }
+
+            // 2진수 변환
+            string binString = Convert.ToString(bin, 2);
+            StringBuilder formattedBin = new StringBuilder();
+
+            int binDigitCount = 0;
+
+            for (int i = binString.Length - 1; i >= 0; i--)
+            {
+                formattedBin.Insert(0, binString[i]);
+
+                // 4자리 이상의 자릿수에 대해서 공백 추가
+                if (++binDigitCount > 3 && i > 0)
+                {
+                    formattedBin.Insert(0, " ");
+                    binDigitCount = 0;
+                }
+            }
+
+            btnHEX.Text = "HEX  " + formattedHex.ToString();
             btnDEC.Text = "DEC  " + Convert.ToString(hex, 10);
-            btnOCT.Text = "OCT  " + Convert.ToString(hex, 8);
-            btnBIN.Text = "BIN  " + Convert.ToString(hex, 2);
-            //Console.WriteLine(btnHEX.Text);
+            btnOCT.Text = "OCT  " + formattedOct.ToString();
+            btnBIN.Text = "BIN  " + formattedBin.ToString();
         }
     }
 }
