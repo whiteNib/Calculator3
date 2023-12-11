@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Calculator3
 {
@@ -68,6 +70,13 @@ namespace Calculator3
             // tableLayoutPanel1을 다음에 추가
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel1);
 
+        }
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 애플리케이션 종료 전에 마지막에 열린 폼의 이름을 저장
+            Properties.Settings.Default.LastOpenedForm = this.Name;
+            Properties.Settings.Default.Save();
+            Application.Exit();
         }
 
         private void Form2_Resize(object sender, EventArgs e)
@@ -331,7 +340,7 @@ namespace Calculator3
         }
 
         long decimalValue = 0;
-        
+
         private void UpdateCheckboxes(long decimalValue)
         {
             // 10진수 값을 기반으로 체크박스 상태를 업데이트
@@ -446,7 +455,7 @@ namespace Calculator3
             bin = Convert.ToInt64(strNum);
             toHEX();
             //Console.WriteLine(strNum);
-            
+
 
         }
 
@@ -712,11 +721,39 @@ namespace Calculator3
             }
             strText = txtResult.Text;
             strNum = Regex.Replace(strText, @"\D", "");
-            hex = Convert.ToInt64(strNum,10);
-            dec = Convert.ToInt64(strNum,10);
-            oct = Convert.ToInt64(strNum,10);
-            bin = Convert.ToInt64(strNum,10);
+            hex = Convert.ToInt64(strNum, 10);
+            dec = Convert.ToInt64(strNum, 10);
+            oct = Convert.ToInt64(strNum, 10);
+            bin = Convert.ToInt64(strNum, 10);
             toHEX();
+        }
+        private void btnHEX_Click(object sender, EventArgs e)
+        {
+            // 보라색의 Color 객체를 생성
+            Color lineColor = Color.Purple;
+
+            // 직사각형 선을 그리기 위한 좌표와 크기 계산
+            int lineThickness = 5; // 선의 두께
+            int lineHeight = (int)(btnHEX.Height * 0.6); // 선의 높이를 1.5로 조절
+            int lineX = 0; // 선의 X 좌표 (버튼의 왼쪽에 그릴 것이므로 0)
+            int lineY = (int)(lineThickness / 0.75); // 선의 Y 좌표 (선의 중간에 맞게 조절)
+
+            // GraphicsPath를 사용하여 라운드를 가진 도형을 정의
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                // AddRectangle 메서드로 직사각형을 추가하고
+                // AddRectangle 메서드의 두 번째 매개변수를 통해 라운드를 조절
+                path.AddRectangle(new Rectangle(lineX, lineY, lineThickness, lineHeight));
+
+                // 선 그리기 (라운드가 있는 도형)
+                using (Pen pen = new Pen(lineColor, lineThickness))
+                {
+                    using (Graphics g = btnHEX.CreateGraphics())
+                    {
+                        g.DrawPath(pen, path);
+                    }
+                }
+            }
         }
     }
 }

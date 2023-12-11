@@ -32,7 +32,12 @@ namespace Calculator3
             btnMhistory.Enabled = false;
             
         }
-        
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 애플리케이션 종료 전에 마지막에 열린 폼의 이름을 저장
+            Properties.Settings.Default.LastOpenedForm = this.Name;
+            Properties.Settings.Default.Save();
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -344,9 +349,10 @@ namespace Calculator3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 newform2 = new Form2();
-            newform2.ShowDialog();
-            this.Close();
+            // Form2를 생성하고 Show로 띄우고, Form1을 닫지 않음
+            Form2 form2 = new Form2();
+            form2.Show();
+            this.Hide();
         }
     }
 }
