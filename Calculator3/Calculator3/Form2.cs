@@ -714,18 +714,15 @@ namespace Calculator3
             if (long.TryParse(txtResult.Text, out decimalValue))
             {
                 UpdateCheckboxes(decimalValue);
+                // 여기에서 hex, dec, oct, bin 값을 업데이트할 필요가 없음
+                // 이미 TryParse를 통해 decimalValue에 성공적으로 값을 변환했기 때문에
+                // decimalValue를 사용
+                toHEX();
             }
             else
             {
                 // 입력된 텍스트가 유효한 10진수가 아닌 경우에 대한 처리
             }
-            strText = txtResult.Text;
-            strNum = Regex.Replace(strText, @"\D", "");
-            hex = Convert.ToInt64(strNum, 10);
-            dec = Convert.ToInt64(strNum, 10);
-            oct = Convert.ToInt64(strNum, 10);
-            bin = Convert.ToInt64(strNum, 10);
-            toHEX();
         }
         private void btnHEX_Click(object sender, EventArgs e)
         {
