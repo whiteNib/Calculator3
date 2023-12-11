@@ -702,6 +702,16 @@ namespace Calculator3
                 }
             }
 
+            // Ensure the binary string has a fixed length of 5 by adding leading zeros
+            int neededZeros = 4 - (formattedBin.Length % 5);
+            if (neededZeros != 5)
+            {
+                for (int i = 0; i < neededZeros; i++)
+                {
+                    formattedBin.Insert(0, "0");
+                }
+            }
+
             btnHEX.Text = "HEX  " + formattedHex.ToString();
             btnDEC.Text = "DEC  " + formattedDec.ToString();
             btnOCT.Text = "OCT  " + formattedOct.ToString();
