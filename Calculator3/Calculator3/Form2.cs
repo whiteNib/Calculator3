@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using System.Numerics;
 
 namespace Calculator3
 {
@@ -20,11 +19,19 @@ namespace Calculator3
         public bool opFlag = false;
         public long memory;
         public bool memFlag = false;
+        public CheckBox[] bitCheckBoxes;
+        string strText = "";
+        string strNum = "";
+        long hex;
+        long dec;
+        long oct;
+        long bin;
 
         public Form2()
         {
             this.KeyPreview = true;  // 폼이 키보드 입력을 받을 수 있도록 설정
             InitializeComponent();
+            InitializeBitCheckBoxes();
 
             btnMhistory.Enabled = false;
 
@@ -34,26 +41,33 @@ namespace Calculator3
             this.Resize += Form2_Resize;
 
             // 초기 폼 크기를 설정 
-            this.Size = new Size(350, 500);
+            this.Size = new Size(450, 600);
 
             // 초기 너비를 기반으로 패널 가시성을 설정 
             UpdatePanelVisibility();
 
             // tableLayoutPanel4를 먼저 추가
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel4);
-            
+
             // tableLayoutPanel3를 추가
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel3);
 
             // tableLayoutPanel5를 추가
-            splitContainer1.Panel1.Controls.Add(tableLayoutPanel5);
+            splitContainer1.Panel1.Controls.Add(tableLayoutPanel7);
+            splitContainer1.Panel1.Controls.Add(tableLayoutPanel6);
+            splitContainer1.Panel1.Controls.Add(tableLayoutPanel8);
+            splitContainer1.Panel1.Controls.Add(tableLayoutPanel9);
+            splitContainer1.Panel1.Controls.Add(tableLayoutPanel10);
+            splitContainer1.Panel1.Controls.Add(tableLayoutPanel11);
+            splitContainer1.Panel1.Controls.Add(tableLayoutPanel12);
+            splitContainer1.Panel1.Controls.Add(flowLayoutPanelBits);
 
             // tableLayoutPanel2를 추가
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel2);
 
             // tableLayoutPanel1을 다음에 추가
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel1);
-                       
+
         }
 
         private void Form2_Resize(object sender, EventArgs e)
@@ -91,13 +105,11 @@ namespace Calculator3
             int y1 = Convert.ToInt32(this.Height * 0.4);
             tableLayoutPanel1.Height = y1;
             int y2 = Convert.ToInt32(this.Height * 0.05);
-            tableLayoutPanel2.Height = y2; 
+            tableLayoutPanel2.Height = y2;
             int y3 = Convert.ToInt32(this.Height * 0.05);
-            tableLayoutPanel3.Height = y3; 
+            tableLayoutPanel3.Height = y3;
             int y4 = Convert.ToInt32(this.Height * 0.2);
             tableLayoutPanel4.Height = y4;
-            int y5 = Convert.ToInt32(this.Height * 0.55);
-            tableLayoutPanel5.Height = y5;
             //Console.WriteLine(y);
             txtResult.Location = new Point(0, y4);
 
@@ -124,27 +136,220 @@ namespace Calculator3
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            this.MinimumSize = new System.Drawing.Size(350, 550);
+            flowLayoutPanelBits.Dock = DockStyle.Bottom;
+            this.MinimumSize = new System.Drawing.Size(450, 600);
             timer1.Start();
+            // textBoxResult가 10진수가 입력되는 TextBox인 것으로 가정
+            txtResult.TextChanged += txtResult_TextChanged;
 
             tableLayoutPanel1.Dock = DockStyle.Bottom;
             tableLayoutPanel2.Dock = DockStyle.Bottom;
             tableLayoutPanel3.Dock = DockStyle.Bottom;
             tableLayoutPanel4.Dock = DockStyle.Bottom;
-            tableLayoutPanel5.Dock = DockStyle.Bottom;
             txtResult.Dock = DockStyle.Bottom;
-
-            tableLayoutPanel5.Visible = false;
         }
-        
+
+        private void InitializeBitCheckBoxes()
+        {
+            // 비트 수 설정
+            int bitCount = 64;
+
+            bitCheckBoxes = new CheckBox[bitCount];
+
+
+            for (int i = bitCount - 1; i >= 48; i--)
+            {
+                // CheckBox 생성
+                CheckBox checkBox = new CheckBox();
+                checkBox.Text = "0";
+                checkBox.CheckedChanged += BitCheckBox_CheckedChanged;
+
+                // 폼에 추가
+                tableLayoutPanel7.Controls.Add(checkBox);
+
+                // 배열에 저장
+                bitCheckBoxes[i] = checkBox;
+
+                // 체크박스 디자인
+                checkBox.Appearance = Appearance.Button;
+                checkBox.FlatStyle = FlatStyle.Flat;
+                checkBox.FlatAppearance.BorderSize = 0;
+                checkBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+                checkBox.Font = new Font("맑은 고딕", 16, FontStyle.Bold);
+                checkBox.Margin = new Padding(0, 0, 0, 0);
+                checkBox.Dock = DockStyle.Left;
+                checkBox.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+                // FlatAppearance 설정
+                checkBox.FlatAppearance.MouseDownBackColor = Color.FromArgb(243, 243, 243); // 클릭 시 배경색
+                checkBox.FlatAppearance.CheckedBackColor = Color.FromArgb(243, 243, 243); // 체크 시 배경색
+
+            }
+
+            for (int i = 47; i >= 32; i--)
+            {
+                // CheckBox 생성
+                CheckBox checkBox = new CheckBox();
+                checkBox.Text = "0";
+                checkBox.CheckedChanged += BitCheckBox_CheckedChanged;
+
+                // 폼에 추가
+                tableLayoutPanel8.Controls.Add(checkBox);
+
+                // 배열에 저장
+                bitCheckBoxes[i] = checkBox;
+
+                // 체크박스 디자인
+                checkBox.Appearance = Appearance.Button;
+                checkBox.FlatStyle = FlatStyle.Flat;
+                checkBox.FlatAppearance.BorderSize = 0;
+                checkBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+                checkBox.Font = new Font("맑은 고딕", 16, FontStyle.Bold);
+                checkBox.Margin = new Padding(0, 0, 0, 0);
+                checkBox.Dock = DockStyle.Left;
+                checkBox.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+                // FlatAppearance 설정
+                checkBox.FlatAppearance.MouseDownBackColor = Color.FromArgb(243, 243, 243); // 클릭 시 배경색
+                checkBox.FlatAppearance.CheckedBackColor = Color.FromArgb(243, 243, 243); // 체크 시 배경색
+
+            }
+
+            for (int i = 31; i >= 16; i--)
+            {
+                // CheckBox 생성
+                CheckBox checkBox = new CheckBox();
+                checkBox.Text = "0";
+                checkBox.CheckedChanged += BitCheckBox_CheckedChanged;
+
+                // 폼에 추가
+                tableLayoutPanel10.Controls.Add(checkBox);
+
+                // 배열에 저장
+                bitCheckBoxes[i] = checkBox;
+
+                // 체크박스 디자인
+                checkBox.Appearance = Appearance.Button;
+                checkBox.FlatStyle = FlatStyle.Flat;
+                checkBox.FlatAppearance.BorderSize = 0;
+                checkBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+                checkBox.Font = new Font("맑은 고딕", 16, FontStyle.Bold);
+                checkBox.Margin = new Padding(0, 0, 0, 0);
+                checkBox.Dock = DockStyle.Left;
+                checkBox.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+                // FlatAppearance 설정
+                checkBox.FlatAppearance.MouseDownBackColor = Color.FromArgb(243, 243, 243); // 클릭 시 배경색
+                checkBox.FlatAppearance.CheckedBackColor = Color.FromArgb(243, 243, 243); // 체크 시 배경색
+
+            }
+
+            for (int i = 15; i >= 0; i--)
+            {
+                // CheckBox 생성
+                CheckBox checkBox = new CheckBox();
+                checkBox.Text = "0";
+                checkBox.CheckedChanged += BitCheckBox_CheckedChanged;
+
+                // 폼에 추가
+                tableLayoutPanel12.Controls.Add(checkBox);
+
+                // 배열에 저장
+                bitCheckBoxes[i] = checkBox;
+
+                // 체크박스 디자인
+                checkBox.Appearance = Appearance.Button;
+                checkBox.FlatStyle = FlatStyle.Flat;
+                checkBox.FlatAppearance.BorderSize = 0;
+                checkBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+                checkBox.Font = new Font("맑은 고딕", 16, FontStyle.Bold);
+                checkBox.Margin = new Padding(0, 0, 0, 0);
+                checkBox.Dock = DockStyle.Left;
+                checkBox.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+                // FlatAppearance 설정
+                checkBox.FlatAppearance.MouseDownBackColor = Color.FromArgb(243, 243, 243); // 클릭 시 배경색
+                checkBox.FlatAppearance.CheckedBackColor = Color.FromArgb(243, 243, 243); // 체크 시 배경색
+
+            }
+        }
+
+        private void BitCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // CheckBox가 변경되었을 때 처리할 로직 추가
+            UpdateResult();
+        }
+
+        // 체크된 체크박스 처리 영역
+        private void UpdateResult()
+        {
+            // 선택된 비트를 이용한 계산 로직 추가
+            long result = 0;
+            for (int i = 0; i < bitCheckBoxes.Length; i++)
+            {
+                if (bitCheckBoxes[i].Checked)
+                {
+                    result |= (1L << i);
+                    bitCheckBoxes[i].Text = "1";
+                    bitCheckBoxes[i].ForeColor = Color.FromArgb(0, 99, 153);
+                    //long temp = 1;
+                    //for (int j = 0; j < i; j++)
+                    //{
+                    //    temp *= 2;
+                    //}
+                    //result |= temp;
+                }
+                else
+                {
+                    bitCheckBoxes[i].Text = "0";
+                    bitCheckBoxes[i].ForeColor = Color.FromArgb(0, 0, 0);
+                }
+            }
+
+            // 계산 결과를 텍스트 상자에 표시
+            txtResult.Text = result.ToString();
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            int y = Convert.ToInt32(this.Height * 0.05625);
+            tableLayoutPanel10.Height = y;
+            tableLayoutPanel11.Height = y;
+            tableLayoutPanel12.Height = y;
+            tableLayoutPanel9.Height = y;
+            tableLayoutPanel8.Height = y;
+            tableLayoutPanel6.Height = y;
+            tableLayoutPanel7.Height = y;
+            flowLayoutPanelBits.Height = y;
+
+            if (txtResult.Text == "")
+            {
+                txtResult.Text = "0";
+            }
+
+            txtResult.SelectionStart = txtResult.Text.Length;
+        }
+
+        long decimalValue = 0;
+        
+        private void UpdateCheckboxes(long decimalValue)
+        {
+            // 10진수 값을 기반으로 체크박스 상태를 업데이트
+            for (int i = 0; i < bitCheckBoxes.Length; i++)
+            {
+                long mask = 1L << i;
+                bitCheckBoxes[i].Checked = (decimalValue & mask) != 0;
+            }
+        }
+
+        private void textBoxResult_Click(object sender, EventArgs e)
+        {
+            // 텍스트 박스를 클릭할 때 다른 컨트롤에 포커스를 이동시켜 커서를 가리키지 않도록 함
         }
 
         private void button33_MouseHover(object sender, EventArgs e)
         {
-            button33.BackgroundImage= pictureBox1.Image;
+            button33.BackgroundImage = pictureBox1.Image;
         }
 
         private void button33_MouseLeave(object sender, EventArgs e)
@@ -166,22 +371,30 @@ namespace Calculator3
         {
             tableLayoutPanel1.Visible = false;
             tableLayoutPanel2.Visible = false;
-            tableLayoutPanel5.Visible = true;
+            tableLayoutPanel7.Visible = true;
+            tableLayoutPanel6.Visible = true;
+            tableLayoutPanel8.Visible = true;
+            tableLayoutPanel9.Visible = true;
+            tableLayoutPanel10.Visible = true;
+            tableLayoutPanel11.Visible = true;
+            tableLayoutPanel12.Visible = true;
+            flowLayoutPanelBits.Visible = true;
         }
 
         private void button33_Click(object sender, EventArgs e)
         {
             tableLayoutPanel1.Visible = true;
             tableLayoutPanel2.Visible = true;
-            tableLayoutPanel5.Visible = false;
+            tableLayoutPanel7.Visible = false;
+            tableLayoutPanel6.Visible = false;
+            tableLayoutPanel8.Visible = false;
+            tableLayoutPanel9.Visible = false;
+            tableLayoutPanel10.Visible = false;
+            tableLayoutPanel11.Visible = false;
+            tableLayoutPanel12.Visible = false;
+            flowLayoutPanelBits.Visible = false;
         }
 
-        string strText = "";
-        string strNum = "";
-        long hex;
-        long dec;
-        long oct;
-        long bin;
 
         private void btn0_Click(object sender, EventArgs e)
         {
@@ -231,9 +444,10 @@ namespace Calculator3
             dec = Convert.ToInt64(strNum);
             oct = Convert.ToInt64(strNum);
             bin = Convert.ToInt64(strNum);
-
             toHEX();
+            //Console.WriteLine(strNum);
             
+
         }
 
         private void btn2_Click(object sender, EventArgs e)
@@ -401,7 +615,7 @@ namespace Calculator3
             oct = Convert.ToInt64(strNum);
             bin = Convert.ToInt64(strNum);
 
-            
+
             toHEX();
         }
 
@@ -480,9 +694,29 @@ namespace Calculator3
             }
 
             btnHEX.Text = "HEX  " + formattedHex.ToString();
-            btnDEC.Text = "DEC  " + Convert.ToString(hex, 10);
+            btnDEC.Text = "DEC  " + formattedDec.ToString();
             btnOCT.Text = "OCT  " + formattedOct.ToString();
             btnBIN.Text = "BIN  " + formattedBin.ToString();
+        }
+
+        private void txtResult_TextChanged(object sender, EventArgs e)
+        {
+            // textBoxResult의 텍스트가 변경되면 체크박스를 업데이트
+            if (long.TryParse(txtResult.Text, out decimalValue))
+            {
+                UpdateCheckboxes(decimalValue);
+            }
+            else
+            {
+                // 입력된 텍스트가 유효한 10진수가 아닌 경우에 대한 처리
+            }
+            strText = txtResult.Text;
+            strNum = Regex.Replace(strText, @"\D", "");
+            hex = Convert.ToInt64(strNum,10);
+            dec = Convert.ToInt64(strNum,10);
+            oct = Convert.ToInt64(strNum,10);
+            bin = Convert.ToInt64(strNum,10);
+            toHEX();
         }
     }
 }
