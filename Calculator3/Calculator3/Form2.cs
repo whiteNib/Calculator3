@@ -26,6 +26,7 @@ namespace Calculator3
         long oct = 0;
         long bin = 0;
         string a;
+        private NumberButtonClickHandler numberButtonClickHandler;
 
         public Form2()
         {
@@ -67,6 +68,22 @@ namespace Calculator3
 
             // tableLayoutPanel1을 다음에 추가
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel1);
+
+            // NumberButtonClickHandler 클래스의 인스턴스를 생성하고 필요한 컨트롤을 전달
+            numberButtonClickHandler = new NumberButtonClickHandler(txtResult, btnHEX, btnDEC, btnOCT, btnBIN);
+
+            // 각 숫자 버튼에 대한 이벤트 핸들러 등록
+
+            btn0.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 0);
+            btn1.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 1);
+            btn2.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 2);
+            btn3.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 3);
+            btn4.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 4);
+            btn5.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 5);
+            btn6.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 6);
+            btn7.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 7);
+            btn8.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 8);
+            btn9.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 9);
 
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -131,7 +148,6 @@ namespace Calculator3
                 // tableLayoutPanel3을 5열로 변경
                 ChangeTableLayoutPanel3ColumnCount(5);
             }
-
         }
 
         private void ChangeTableLayoutPanel3ColumnCount(int columnCount)
@@ -191,7 +207,7 @@ namespace Calculator3
                 checkBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
                 checkBox.Font = new Font("검은 고딕", 14, FontStyle.Bold);
                 checkBox.Margin = new Padding(0, 0, 0, 0);
-                checkBox.Dock = DockStyle.Left;
+                checkBox.Dock = DockStyle.Fill;
                 checkBox.FlatAppearance.MouseOverBackColor = Color.Transparent;
 
                 // FlatAppearance 설정
@@ -328,9 +344,12 @@ namespace Calculator3
             dec = Convert.ToInt64(a);
             oct = Convert.ToInt64(a);
             bin = Convert.ToInt64(a);
-            toHEX();
-        }
 
+            numberButtonClickHandler.toHEX(hex);
+            numberButtonClickHandler.toDEC(dec);
+            numberButtonClickHandler.toOCT(oct);
+            numberButtonClickHandler.toBIN(bin);
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             int y = Convert.ToInt32(this.Height * 0.06);
@@ -357,8 +376,6 @@ namespace Calculator3
             }
 
             txtResult.SelectionStart = txtResult.Text.Length;
-
-
         }
 
         long decimalValue = 0;
@@ -426,270 +443,29 @@ namespace Calculator3
             flowLayoutPanelBits1.Visible = false;
         }
 
-
-        private void btn0_Click(object sender, EventArgs e)
+        private void HandleNumberButtonClick(object sender, EventArgs e, int number)
         {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
+            // 현재 txtResult.Text 값을 long으로 변환하여 성공 여부를 확인
+            if (long.TryParse(txtResult.Text, out long currentValue))
             {
-                txtResult.Text = "0";
-                opFlag = false;
-                memFlag = false;
+                // 변환이 성공한 경우에만 처리
+                // currentValue에는 현재 txtResult.Text의 값이 long으로 변환된 결과가 들어있음
+                // 이 값을 활용하여 필요한 작업을 수행
+                // 예: currentValue에 현재 클릭된 숫자를 추가하거나 새로운 값을 할당
+                // ...
+
+                // 클릭한 숫자를 추가하거나 새로운 값을 할당하는 예시:
+                currentValue = currentValue * 10 + number;
+
+                // 처리가 완료된 값을 txtResult.Text에 반영
+                txtResult.Text = currentValue.ToString();
             }
             else
             {
-                txtResult.Text += "0";
+                // 변환이 실패한 경우 (범위를 벗어나는 경우 등)
+                // 이 경우에는 클릭 이벤트를 무시하거나 다른 예외 처리를 수행할 수 있음
+                // 여기에서는 클릭을 무시하도록 처리
             }
-
-            btnHEX.Text += "0";
-            btnDEC.Text += "0";
-            btnOCT.Text += "0";
-            btnBIN.Text += "0";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-        }
-
-
-        private void btn1_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "1";
-                opFlag = false;
-                memFlag = false;
-
-            }
-            else
-            {
-                txtResult.Text += "1";
-            }
-
-            btnHEX.Text += "1";
-            btnDEC.Text += "1";
-            btnOCT.Text += "1";
-            btnBIN.Text += "1";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-
-            
-
-        }
-
-        private void btn2_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "2";
-                opFlag = false;
-                memFlag = false;
-            }
-            else
-            {
-                txtResult.Text += "2";
-            }
-
-            btnHEX.Text += "2";
-            btnDEC.Text += "2";
-            btnOCT.Text += "2";
-            btnBIN.Text += "2";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-        }
-
-        private void btn3_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "3";
-                opFlag = false;
-                memFlag = false;
-            }
-            else
-            {
-                txtResult.Text += "3";
-            }
-
-            btnHEX.Text += "3";
-            btnDEC.Text += "3";
-            btnOCT.Text += "3";
-            btnBIN.Text += "3";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-        }
-
-        private void btn4_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "4";
-                opFlag = false;
-                memFlag = false;
-            }
-            else
-            {
-                txtResult.Text += "4";
-            }
-
-            btnHEX.Text += "4";
-            btnDEC.Text += "4";
-            btnOCT.Text += "4";
-            btnBIN.Text += "4";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-        }
-
-        private void btn5_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "5";
-                opFlag = false;
-                memFlag = false;
-            }
-            else
-            {
-                txtResult.Text += "5";
-            }
-
-            btnHEX.Text += "5";
-            btnDEC.Text += "5";
-            btnOCT.Text += "5";
-            btnBIN.Text += "5";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-        }
-
-        private void btn6_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "6";
-                opFlag = false;
-                memFlag = false;
-            }
-            else
-            {
-                txtResult.Text += "6";
-            }
-
-            btnHEX.Text += "6";
-            btnDEC.Text += "6";
-            btnOCT.Text += "6";
-            btnBIN.Text += "6";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-        }
-
-        private void btn7_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "7";
-                opFlag = false;
-                memFlag = false;
-            }
-            else
-            {
-                txtResult.Text += "7";
-            }
-
-            btnHEX.Text += "7";
-            btnDEC.Text += "7";
-            btnOCT.Text += "7";
-            btnBIN.Text += "7";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-        }
-
-        private void btn8_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "8";
-                opFlag = false;
-                memFlag = false;
-            }
-            else
-            {
-                txtResult.Text += "8";
-            }
-
-            btnHEX.Text += "8";
-            btnDEC.Text += "8";
-            btnOCT.Text += "8";
-            btnBIN.Text += "8";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
-        }
-
-        private void btn9_Click(object sender, EventArgs e)
-        {
-            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
-            {
-                txtResult.Text = "9";
-                opFlag = false;
-                memFlag = false;
-            }
-            else
-            {
-                txtResult.Text += "9";
-            }
-
-            btnHEX.Text += "9";
-            btnDEC.Text += "9";
-            btnOCT.Text += "9";
-            btnBIN.Text += "9";
-
-            string a = txtResult.Text.Replace(",", "");
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
-            toHEX();
         }
 
         public void toHEX()
@@ -775,7 +551,6 @@ namespace Calculator3
                     formattedBin.Insert(0, "0");
                 }
             }
-           
 
             btnHEX.Text = "HEX  " + formattedHex.ToString();
             btnDEC.Text = "DEC  " + formattedDec.ToString();
@@ -794,8 +569,6 @@ namespace Calculator3
                 // 여기에서 hex, dec, oct, bin 값을 업데이트할 필요가 없음
                 // 이미 TryParse를 통해 decimalValue에 성공적으로 값을 변환했기 때문에
                 // decimalValue를 사용
-
-              
             }
             else
             {
@@ -937,7 +710,5 @@ namespace Calculator3
             long v = long.Parse(txtResult.Text);
             txtResult.Text = (-v).ToString();
         }
-
-        
     }
 }
