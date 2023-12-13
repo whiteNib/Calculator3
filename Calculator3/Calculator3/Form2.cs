@@ -14,7 +14,7 @@ namespace Calculator3
 {
     public partial class Form2 : Form
     {
-        private bool isPanel2Visible = false;
+        public bool isPanel2Visible = false;
         public long lValue;
         public char op = '\0';
         public bool opFlag = false;
@@ -25,8 +25,11 @@ namespace Calculator3
         long dec = 0;
         long oct = 0;
         long bin = 0;
-        string a;
-        private NumberButtonClickHandler numberButtonClickHandler;
+        int FormationConvert = 0;
+        string ConvertingNum;
+        public NumberButtonClickHandler numberButtonClickHandler;
+        long currentValue;
+        int btnClickedState = 10;// 진수 변환 버튼 클릭 상태
 
         public Form2()
         {
@@ -70,7 +73,7 @@ namespace Calculator3
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel1);
 
             // NumberButtonClickHandler 클래스의 인스턴스를 생성하고 필요한 컨트롤을 전달
-            numberButtonClickHandler = new NumberButtonClickHandler(txtResult, btnHEX, btnDEC, btnOCT, btnBIN);
+            numberButtonClickHandler = new NumberButtonClickHandler(txtResult, btnHEX, btnDEC, btnOCT, btnBIN, temporary);
 
             // 각 숫자 버튼에 대한 이벤트 핸들러 등록
 
@@ -103,8 +106,9 @@ namespace Calculator3
         private void UpdateControlFont()
         {
             // 폼의 높이에 따라 폰트 크기를 동적으로 조절
-            int fontSize = Convert.ToInt32(this.Width * 0.05); // 높이의 5% 크기로 설정
+            int fontSize = Convert.ToInt32(this.Height * 0.035); // 높이의 3.5% 크기로 설정
             txtResult.Font = new Font(txtResult.Font.FontFamily, fontSize, txtResult.Font.Style);
+            temporary.Font = new Font(txtResult.Font.FontFamily, fontSize, txtResult.Font.Style);
         }
 
         private void UpdatePanelVisibility()
@@ -136,6 +140,19 @@ namespace Calculator3
             tableLayoutPanel4.Height = y4;
             //Console.WriteLine(y);
             txtResult.Location = new Point(0, y4);
+            int y5 = Convert.ToInt32(splitContainer1.Panel1.Width * 0.98);
+            temporary.Width = y5;
+            temporary.Location = new Point(5, 60);
+            int y = Convert.ToInt32(this.Height * 0.06);
+            flowLayoutPanelBits8.Height = y;
+            flowLayoutPanelBits7.Height = y;
+            flowLayoutPanelBits6.Height = y;
+            flowLayoutPanelBits5.Height = y;
+            flowLayoutPanelBits4.Height = y;
+            flowLayoutPanelBits3.Height = y;
+            flowLayoutPanelBits2.Height = y;
+            flowLayoutPanelBits1.Height = y;
+
 
             // splitContainer.Panel2가 나타날 때만 tableLayoutPanel3의 열 구조를 변경
             if (isPanel2Visible)
@@ -164,6 +181,7 @@ namespace Calculator3
             timer1.Start();
             // textBoxResult가 10진수가 입력되는 TextBox인 것으로 가정
             txtResult.Text = "0";
+            temporary.Text = "0";
             txtResult.TextChanged += txtResult_TextChanged;
 
             tableLayoutPanel1.Dock = DockStyle.Bottom;
@@ -175,7 +193,7 @@ namespace Calculator3
             btnHEX.Text = "HEX  0";
             btnDEC.Text = "DEC  0";
             btnOCT.Text = "OCT  0";
-            btnBIN.Text = "BIN  0";
+            btnBIN.Text = "BIN  0000";
 
         }
 
@@ -234,7 +252,7 @@ namespace Calculator3
                 checkBox.FlatStyle = FlatStyle.Flat;
                 checkBox.FlatAppearance.BorderSize = 0;
                 checkBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-                checkBox.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
+                checkBox.Font = new Font("검은 고딕", 14, FontStyle.Bold);
                 checkBox.Margin = new Padding(0, 0, 0, 0);
                 checkBox.Dock = DockStyle.Left;
                 checkBox.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -263,7 +281,7 @@ namespace Calculator3
                 checkBox.FlatStyle = FlatStyle.Flat;
                 checkBox.FlatAppearance.BorderSize = 0;
                 checkBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-                checkBox.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
+                checkBox.Font = new Font("검은 고딕", 14, FontStyle.Bold);
                 checkBox.Margin = new Padding(0, 0, 0, 0);
                 checkBox.Dock = DockStyle.Left;
                 checkBox.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -292,7 +310,7 @@ namespace Calculator3
                 checkBox.FlatStyle = FlatStyle.Flat;
                 checkBox.FlatAppearance.BorderSize = 0;
                 checkBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-                checkBox.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
+                checkBox.Font = new Font("검은 고딕", 14, FontStyle.Bold);
                 checkBox.Margin = new Padding(0, 0, 0, 0);
                 checkBox.Dock = DockStyle.Left;
                 checkBox.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -336,31 +354,47 @@ namespace Calculator3
                     bitCheckBoxes[i].ForeColor = Color.FromArgb(0, 0, 0);
                 }
             }
-
             // 계산 결과를 텍스트 상자에 표시
             txtResult.Text = result.ToString();
 
-            hex = Convert.ToInt64(a);
-            dec = Convert.ToInt64(a);
-            oct = Convert.ToInt64(a);
-            bin = Convert.ToInt64(a);
+            hex = Convert.ToInt64(ConvertingNum);
+            dec = Convert.ToInt64(ConvertingNum);
+            oct = Convert.ToInt64(ConvertingNum);
+            bin = Convert.ToInt64(ConvertingNum);
 
-            numberButtonClickHandler.toHEX(hex);
-            numberButtonClickHandler.toDEC(dec);
-            numberButtonClickHandler.toOCT(oct);
-            numberButtonClickHandler.toBIN(bin);
+            if (btnClickedState == 16)
+            {
+                numberButtonClickHandler.toDEC(dec);
+                numberButtonClickHandler.toOCT(oct);
+                numberButtonClickHandler.toBIN(bin);
+                numberButtonClickHandler.toHEX(hex);
+            }
+            if (btnClickedState == 10)
+            {
+                numberButtonClickHandler.toHEX(hex);
+                numberButtonClickHandler.toOCT(oct);
+                numberButtonClickHandler.toBIN(bin);
+                numberButtonClickHandler.toDEC(dec);
+            }
+            if (btnClickedState == 8)
+            {
+                numberButtonClickHandler.toHEX(hex);
+                numberButtonClickHandler.toDEC(dec);
+                numberButtonClickHandler.toBIN(bin);
+                numberButtonClickHandler.toOCT(oct);
+            }
+            if (btnClickedState == 2)
+            {
+                numberButtonClickHandler.toHEX(hex);
+                numberButtonClickHandler.toDEC(dec);
+                numberButtonClickHandler.toOCT(oct);
+                numberButtonClickHandler.toBIN(bin);
+            }
+
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int y = Convert.ToInt32(this.Height * 0.06);
-            flowLayoutPanelBits8.Height = y;
-            flowLayoutPanelBits7.Height = y;
-            flowLayoutPanelBits6.Height = y;
-            flowLayoutPanelBits5.Height = y;
-            flowLayoutPanelBits4.Height = y;
-            flowLayoutPanelBits3.Height = y;
-            flowLayoutPanelBits2.Height = y;
-            flowLayoutPanelBits1.Height = y;
+            
 
             if (txtResult.Text == "")
             {
@@ -445,125 +479,34 @@ namespace Calculator3
 
         private void HandleNumberButtonClick(object sender, EventArgs e, int number)
         {
-            // 현재 txtResult.Text 값을 long으로 변환하여 성공 여부를 확인
-            if (long.TryParse(txtResult.Text, out long currentValue))
-            {
-                // 변환이 성공한 경우에만 처리
-                // currentValue에는 현재 txtResult.Text의 값이 long으로 변환된 결과가 들어있음
-                // 이 값을 활용하여 필요한 작업을 수행
-                // 예: currentValue에 현재 클릭된 숫자를 추가하거나 새로운 값을 할당
-                // ...
+            //// 현재 txtResult.Text 값을 long으로 변환하여 성공 여부를 확인
+            //if (long.TryParse(txtResult.Text, out currentValue))
+            //{
+            //    // 변환이 성공한 경우에만 처리
+            //    // currentValue에는 현재 txtResult.Text의 값이 long으로 변환된 결과가 들어있음
+            //    // 이 값을 활용하여 필요한 작업을 수행
+            //    // 예: currentValue에 현재 클릭된 숫자를 추가하거나 새로운 값을 할당
+            //    // ...
 
-                // 클릭한 숫자를 추가하거나 새로운 값을 할당하는 예시:
-                currentValue = currentValue * 10 + number;
+            //    // 클릭한 숫자를 추가하거나 새로운 값을 할당하는 예시:
+            //    currentValue = currentValue * 10 + number;
 
-                // 처리가 완료된 값을 txtResult.Text에 반영
-                txtResult.Text = currentValue.ToString();
-            }
-            else
-            {
-                // 변환이 실패한 경우 (범위를 벗어나는 경우 등)
-                // 이 경우에는 클릭 이벤트를 무시하거나 다른 예외 처리를 수행할 수 있음
-                // 여기에서는 클릭을 무시하도록 처리
-            }
-        }
-
-        public void toHEX()
-        {
-            // 16진수 변환
-            string hexString = hex.ToString("X"); // 4자리 이상도 모두 포함하기 위해 "X" 사용
-            StringBuilder formattedHex = new StringBuilder();
-
-            int digitCount = 0;
-
-            for (int i = hexString.Length - 1; i >= 0; i--)
-            {
-                formattedHex.Insert(0, hexString[i]);
-
-                // 4자리 이상의 자릿수에 대해서 공백 추가
-                if (++digitCount > 3 && i > 0)
-                {
-                    formattedHex.Insert(0, " ");
-                    digitCount = 0;
-                }
-            }
-
-            int octDigitCount = 0;
-            StringBuilder formattedOct = new StringBuilder();
-
-            // 10진수 변환
-            string decString = Convert.ToString(hex, 10);
-            StringBuilder formattedDec = new StringBuilder();
-
-            int decDigitCount = 0;
-
-            for (int i = decString.Length - 1; i >= 0; i--)
-            {
-                formattedDec.Insert(0, decString[i]);
-
-                // 3자리 이상의 자릿수에 대해서 쉼표 추가
-                if (++decDigitCount > 2 && i > 0)
-                {
-                    formattedDec.Insert(0, ",");
-                    decDigitCount = 0;
-                }
-            }
-
-            // 8진수 변환
-            string octString = Convert.ToString(hex, 8);
-
-            for (int i = octString.Length - 1; i >= 0; i--)
-            {
-                formattedOct.Insert(0, octString[i]);
-
-                // 3자리 이상의 자릿수에 대해서 공백 추가
-                if (++octDigitCount > 2 && i > 0)
-                {
-                    formattedOct.Insert(0, " ");
-                    octDigitCount = 0;
-                }
-            }
-
-            // 2진수 변환
-            string binString = Convert.ToString(bin, 2);
-            StringBuilder formattedBin = new StringBuilder();
-
-            int binDigitCount = 0;
-
-            for (int i = binString.Length-1 ; i >= 0; i--)
-            {
-                formattedBin.Insert(0, binString[i]);
-
-                // 4자리 이상의 자릿수에 대해서 공백 추가
-                if (++binDigitCount > 3 && i > 0)
-                {
-                    formattedBin.Insert(0, " ");
-                    binDigitCount = 0;
-                }
-            }
-
-            // 이진수 변환시 4자리씩 출력
-            int addedZeros = 4 - (formattedBin.Length % 5); 
-            if (addedZeros != 5)
-            {
-                for (int i = 0; i < addedZeros; i++)
-                {
-                    formattedBin.Insert(0, "0");
-                }
-            }
-
-            btnHEX.Text = "HEX  " + formattedHex.ToString();
-            btnDEC.Text = "DEC  " + formattedDec.ToString();
-            btnOCT.Text = "OCT  " + formattedOct.ToString();
-            btnBIN.Text = "BIN  " + formattedBin.ToString();
-            txtResult.Text = formattedDec.ToString();
+            //    // 처리가 완료된 값을 txtResult.Text에 반영
+            //    txtResult.Text = currentValue.ToString();
+            //}
+            //else
+            //{
+            //    // 변환이 실패한 경우 (범위를 벗어나는 경우 등)
+            //    // 이 경우에는 클릭 이벤트를 무시하거나 다른 예외 처리를 수행할 수 있음
+            //    // 여기에서는 클릭을 무시하도록 처리
+            //}
         }
 
         private void txtResult_TextChanged(object sender, EventArgs e)
         {
             // textBoxResult의 텍스트가 변경되면 체크박스를 업데이트
-            a = txtResult.Text.Replace(",", ""); // a = 텍스트 박스에서 콤마 제거, 필수 코드
-            if (long.TryParse(a, out decimalValue))
+            ConvertingNum = txtResult.Text.Replace(",", ""); // ConvertingNum = 텍스트 박스에서 콤마 제거, 필수 코드
+            if (long.TryParse(ConvertingNum, out decimalValue))
             {
                 UpdateCheckboxes(decimalValue);
                 // 여기에서 hex, dec, oct, bin 값을 업데이트할 필요가 없음
@@ -577,6 +520,7 @@ namespace Calculator3
         }
         private void btnHEX_Click(object sender, EventArgs e)
         {
+            btnClickedState = 16;
             // 보라색의 Color 객체를 생성
             Color lineColor = Color.Purple;
 
@@ -617,10 +561,16 @@ namespace Calculator3
             btn4.Enabled = true;
             btn3.Enabled = true;
             btn2.Enabled = true;
+
+            hex = Convert.ToInt64(ConvertingNum);
+
+            numberButtonClickHandler.toHEX(hex);
         }
 
         private void btnDEC_Click(object sender, EventArgs e)
         {
+            btnClickedState = 10;
+
             btnA.Enabled = false;
             btnB.Enabled = false;
             btnC.Enabled = false;
@@ -635,10 +585,14 @@ namespace Calculator3
             btn4.Enabled = true;
             btn3.Enabled = true;
             btn2.Enabled = true;
+
+            numberButtonClickHandler.toDEC(dec);
         }
 
         private void btnOCT_Click(object sender, EventArgs e)
         {
+            btnClickedState = 8;
+
             btn9.Enabled = false;
             btn8.Enabled = false;
             btn7.Enabled = true;
@@ -647,43 +601,68 @@ namespace Calculator3
             btn4.Enabled = true;
             btn3.Enabled = true;
             btn2.Enabled = true;
+
+            numberButtonClickHandler.toOCT(oct);
         }
 
         private void btnBIN_Click(object sender, EventArgs e)
         {
+            btnClickedState = 2;
+
             btn7.Enabled = false;
             btn6.Enabled = false;
             btn5.Enabled = false;
             btn4.Enabled = false;
             btn3.Enabled = false;
             btn2.Enabled = false;
+
+            numberButtonClickHandler.toBIN(bin);
         }
 
-
-        int i = 0;
+        
         private void btnFormationConvert_Click(object sender, EventArgs e)
         {
-            i++;
+            FormationConvert++;
             
-            if (i == 0)
+            if (FormationConvert == 0)
             {
                 btnFormationConvert.Text = "QWORD";
-
+                SetCheckBoxesEnabled(true); // 모든 체크박스를 활성화
             }
-            if (i == 1)
+            if (FormationConvert == 1)
             {
                 btnFormationConvert.Text = "DWORD";
-                
+                SetCheckBoxesEnabled(false, 63, 32); // 63번부터 32번 체크박스 비활성화
             }
-            if (i == 2)
+            if (FormationConvert == 2)
             {
                 btnFormationConvert.Text = "WORD";
-                
+                SetCheckBoxesEnabled(false, 63, 16); // 63번부터 16번 체크박스 비활성화
             }
-            if (i == 3)
+            if (FormationConvert == 3)
             {
                 btnFormationConvert.Text = "BYTE";
-                i = -1;
+                SetCheckBoxesEnabled(false, 63,8); // 63번부터 16번 체크박스 비활성화
+                FormationConvert = -1;
+            }
+        }
+        private void SetCheckBoxesEnabled(bool enabled, int startIdx = 63, int endIdx = 0)
+        {
+            // 체크박스를 시작 인덱스부터 끝 인덱스까지 활성화 또는 비활성화
+            for (int i = startIdx; i >= endIdx; i--)
+            {
+                bitCheckBoxes[i].Enabled = enabled;
+
+                // 만약 체크박스를 비활성화하면 체크를 해제하고 색상 변경
+                if (!enabled)
+                {
+                    bitCheckBoxes[i].Checked = false;
+                    bitCheckBoxes[i].ForeColor = Color.FromArgb(200, 200, 200); // 텍스트 색상 변경
+                }
+                else
+                {
+                    bitCheckBoxes[i].ForeColor = Color.Black; // 텍스트 색상을 블랙으로 변경
+                }
             }
         }
 
@@ -710,5 +689,6 @@ namespace Calculator3
             long v = long.Parse(txtResult.Text);
             txtResult.Text = (-v).ToString();
         }
+        
     }
 }

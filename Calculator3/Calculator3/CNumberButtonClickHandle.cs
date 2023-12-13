@@ -9,22 +9,24 @@ namespace Calculator3
 {
     public class NumberButtonClickHandler
     {
-        private TextBox txtResult;
-        private Button btnHEX;
-        private Button btnDEC;
-        private Button btnOCT;
-        private Button btnBIN;
+        public TextBox txtResult;
+        public Button btnHEX;
+        public Button btnDEC;
+        public Button btnOCT;
+        public Button btnBIN;
+        public TextBox temporary;
+        public bool opFlag;
+        public bool memFlag;
 
-        private bool opFlag;
-        private bool memFlag;
-
-        public NumberButtonClickHandler(TextBox txtResult, Button btnHEX, Button btnDEC, Button btnOCT, Button btnBIN)
+        public NumberButtonClickHandler(TextBox txtResult, Button btnHEX, Button btnDEC, Button btnOCT, Button btnBIN, TextBox temporary)
         {
             this.txtResult = txtResult;
             this.btnHEX = btnHEX;
             this.btnDEC = btnDEC;
             this.btnOCT = btnOCT;
             this.btnBIN = btnBIN;
+            this.temporary = temporary;
+            
         }
 
         public void HandleNumberButtonClick(object sender, EventArgs e, int number)
@@ -44,17 +46,19 @@ namespace Calculator3
             btnDEC.Text += number.ToString();
             btnOCT.Text += number.ToString();
             btnBIN.Text += number.ToString();
-
-            string a = txtResult.Text.Replace(",", "");
-            long hex = Convert.ToInt64(a);
-            long dec = Convert.ToInt64(a);
-            long oct = Convert.ToInt64(a);
-            long bin = Convert.ToInt64(a);
+            temporary.Text = txtResult.Text;
+            string ConvertingNum = txtResult.Text.Replace(",", "");
+            long hex = Convert.ToInt64(ConvertingNum);
+            long dec = Convert.ToInt64(ConvertingNum);
+            long oct = Convert.ToInt64(ConvertingNum);
+            long bin = Convert.ToInt64(ConvertingNum);
 
             toHEX(hex);
             toDEC(dec);
             toOCT(oct);
             toBIN(bin);
+
+            temporary.Text = txtResult.Text;
         }
 
         public void toHEX(long value)
@@ -77,11 +81,7 @@ namespace Calculator3
                 }
             }
             btnHEX.Text = "HEX  " + formattedHex.ToString();
-            
-            
-            
-            
-
+            temporary.Text = formattedHex.ToString();
         }
 
         public void toDEC(long value)
@@ -105,6 +105,7 @@ namespace Calculator3
             }
             btnDEC.Text = "DEC  " + formattedDec.ToString();
             txtResult.Text = formattedDec.ToString();
+            temporary.Text = formattedDec.ToString();
         }
 
         public void toOCT(long value)
@@ -127,6 +128,7 @@ namespace Calculator3
                 }
             }
             btnOCT.Text = "OCT  " + formattedOct.ToString();
+            temporary.Text = formattedOct.ToString();
         }
 
         public void toBIN(long value)
@@ -159,6 +161,7 @@ namespace Calculator3
                 }
             }
             btnBIN.Text = "BIN  " + formattedBin.ToString();
+            temporary.Text = formattedBin.ToString();
         }
     }
 }
