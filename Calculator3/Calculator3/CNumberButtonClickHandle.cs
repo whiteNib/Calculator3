@@ -4,6 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+/********************************************************************
+	created:	2023/12/15
+	created:	15:12:2023   10:19
+	filename: 	C:\Users\SW DEV2\Desktop\Calculator3-main\Calculator3\Calculator3\CNumberButtonClickHandle.cs
+	file path:	C:\Users\SW DEV2\Desktop\Calculator3-main\Calculator3\Calculator3
+	file base:	CNumberButtonClickHandle
+	file ext:	cs
+	author:		Author
+	
+	purpose:	
+*********************************************************************/
+/**
+ @class CNumberButtonClickHandler
+ 
+ @brief 
+  숫자버튼을 클릭 핸들러 및 진법 변환 함수
+ 
+ @details
+  숫자 버튼을 클릭하면 txtResult.Text에 숫자가 추가되고 txtResult.Text는 temporary.Text에 적용
+ * 16진수, 10진수, 8진수, 2진수 버튼을 클릭하면 temporary.Text의 숫자가 선택한 진법 버튼에 따라 맞는 진법으로 변환
+  
+ @par History
+  클래스 변경 이력
+  
+ @todo
+  추가 작업 사항
+  
+*/
 
 namespace Calculator3
 {
@@ -47,7 +75,7 @@ namespace Calculator3
             btnOCT.Text += number.ToString();
             btnBIN.Text += number.ToString();
             temporary.Text = txtResult.Text;
-            string ConvertingNum = txtResult.Text.Replace(",", "");
+            string ConvertingNum = txtResult.Text.Replace(",", ""); // txtResult.Text에서 콤마만 제거. 마이너스는 제거X
             long hex = Convert.ToInt64(ConvertingNum);
             long dec = Convert.ToInt64(ConvertingNum);
             long oct = Convert.ToInt64(ConvertingNum);
