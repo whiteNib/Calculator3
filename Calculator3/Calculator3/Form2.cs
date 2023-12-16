@@ -26,9 +26,9 @@ namespace Calculator3
         long oct = 0;
         long bin = 0;
         int FormationConvert = 0;
-        string ConvertingNum;
+        string ConvertingNum ="0";
         public NumberButtonClickHandler numberButtonClickHandler;
-        long currentValue;
+        long currentValue = 0 ;
         int btnClickedState = 10;// 진수 변환 버튼 클릭 상태
 
         public Form2()
@@ -74,19 +74,6 @@ namespace Calculator3
 
             // NumberButtonClickHandler 클래스의 인스턴스를 생성하고 필요한 컨트롤을 전달
             numberButtonClickHandler = new NumberButtonClickHandler(txtResult, btnHEX, btnDEC, btnOCT, btnBIN, temporary);
-
-            // 각 숫자 버튼에 대한 이벤트 핸들러 등록
-
-            btn0.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 0);
-            btn1.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 1);
-            btn2.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 2);
-            btn3.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 3);
-            btn4.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 4);
-            btn5.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 5);
-            btn6.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 6);
-            btn7.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 7);
-            btn8.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 8);
-            btn9.Click += (sender, e) => numberButtonClickHandler.HandleNumberButtonClick(sender, e, 9);
 
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -395,11 +382,6 @@ namespace Calculator3
         private void timer1_Tick(object sender, EventArgs e)
         {
             
-
-            if (txtResult.Text == "")
-            {
-                txtResult.Text = "0";
-            }
             if (txtResult.Text != "0")
             {
                 btnAllClear.Text = "CE";
@@ -477,31 +459,6 @@ namespace Calculator3
             flowLayoutPanelBits1.Visible = false;
         }
 
-        private void HandleNumberButtonClick(object sender, EventArgs e, int number)
-        {
-            //// 현재 txtResult.Text 값을 long으로 변환하여 성공 여부를 확인
-            //if (long.TryParse(txtResult.Text, out currentValue))
-            //{
-            //    // 변환이 성공한 경우에만 처리
-            //    // currentValue에는 현재 txtResult.Text의 값이 long으로 변환된 결과가 들어있음
-            //    // 이 값을 활용하여 필요한 작업을 수행
-            //    // 예: currentValue에 현재 클릭된 숫자를 추가하거나 새로운 값을 할당
-            //    // ...
-
-            //    // 클릭한 숫자를 추가하거나 새로운 값을 할당하는 예시:
-            //    currentValue = currentValue * 10 + number;
-
-            //    // 처리가 완료된 값을 txtResult.Text에 반영
-            //    txtResult.Text = currentValue.ToString();
-            //}
-            //else
-            //{
-            //    // 변환이 실패한 경우 (범위를 벗어나는 경우 등)
-            //    // 이 경우에는 클릭 이벤트를 무시하거나 다른 예외 처리를 수행할 수 있음
-            //    // 여기에서는 클릭을 무시하도록 처리
-            //}
-        }
-
         private void txtResult_TextChanged(object sender, EventArgs e)
         {
             // textBoxResult의 텍스트가 변경되면 체크박스를 업데이트
@@ -521,31 +478,31 @@ namespace Calculator3
         private void btnHEX_Click(object sender, EventArgs e)
         {
             btnClickedState = 16;
-            // 보라색의 Color 객체를 생성
-            Color lineColor = Color.Purple;
+            //// 보라색의 Color 객체를 생성
+            //Color lineColor = Color.Purple;
 
-            // 직사각형 선을 그리기 위한 좌표와 크기 계산
-            int lineThickness = 3; // 선의 두께
-            int lineHeight = (int)(btnHEX.Height * 0.6); // 선의 높이를 1.5로 조절
-            int lineX = 0; // 선의 X 좌표 (버튼의 왼쪽에 그릴 것이므로 0)
-            int lineY = (int)(lineThickness / 0.75); // 선의 Y 좌표 (선의 중간에 맞게 조절)
+            //// 직사각형 선을 그리기 위한 좌표와 크기 계산
+            //int lineThickness = 3; // 선의 두께
+            //int lineHeight = (int)(btnHEX.Height * 0.6); // 선의 높이를 1.5로 조절
+            //int lineX = 0; // 선의 X 좌표 (버튼의 왼쪽에 그릴 것이므로 0)
+            //int lineY = (int)(lineThickness / 0.75); // 선의 Y 좌표 (선의 중간에 맞게 조절)
 
-            // GraphicsPath를 사용하여 라운드를 가진 도형을 정의
-            using (GraphicsPath path = new GraphicsPath())
-            {
-                // AddRectangle 메서드로 직사각형을 추가하고
-                // AddRectangle 메서드의 두 번째 매개변수를 통해 라운드를 조절
-                path.AddRectangle(new Rectangle(lineX, lineY, lineThickness, lineHeight));
+            //// GraphicsPath를 사용하여 라운드를 가진 도형을 정의
+            //using (GraphicsPath path = new GraphicsPath())
+            //{
+            //    // AddRectangle 메서드로 직사각형을 추가하고
+            //    // AddRectangle 메서드의 두 번째 매개변수를 통해 라운드를 조절
+            //    path.AddRectangle(new Rectangle(lineX, lineY, lineThickness, lineHeight));
 
-                // 선 그리기 (라운드가 있는 도형)
-                using (Pen pen = new Pen(lineColor, lineThickness))
-                {
-                    using (Graphics g = btnHEX.CreateGraphics())
-                    {
-                        g.DrawPath(pen, path);
-                    }
-                }
-            }
+            //    // 선 그리기 (라운드가 있는 도형)
+            //    using (Pen pen = new Pen(lineColor, lineThickness))
+            //    {
+            //        using (Graphics g = btnHEX.CreateGraphics())
+            //        {
+            //            g.DrawPath(pen, path);
+            //        }
+            //    }
+            //}
 
             btnA.Enabled = true;
             btnB.Enabled = true;
@@ -669,6 +626,7 @@ namespace Calculator3
         private void btnAllClear_Click(object sender, EventArgs e)
         {
             txtResult.Text = "0";
+            temporary.Text = "0";
             //txtExp.Text = "";
             lValue = 0;
             op = '\0';
@@ -686,9 +644,165 @@ namespace Calculator3
 
         private void btnPM_Click(object sender, EventArgs e)
         {
-            long v = long.Parse(txtResult.Text);
-            txtResult.Text = (-v).ToString();
+            if (txtResult.Text == "0")
+            {
+
+            }
+            else
+            {
+                long v = long.Parse(ConvertingNum);
+                txtResult.Text = (-v).ToString();
+            }
+            
         }
+
+        private long rValue = 0;
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            PerformOperation();
+            txtExp.Text = txtResult.Text + " + ";
+            op = '+';
+            opFlag = true;
+        }
+
+        private void btnSubtract_Click(object sender, EventArgs e)
+        {
+            PerformOperation();
+            txtExp.Text = txtResult.Text + " - ";
+            op = '-';
+            opFlag = true;
+        }
+
+        private void btnMultiply_Click(object sender, EventArgs e)
+        {
+            PerformOperation();
+            txtExp.Text = txtResult.Text + " × ";
+            op = '*';
+            opFlag = true;
+        }
+
+        private void btnDivide_Click(object sender, EventArgs e)
+        {
+            PerformOperation();
+            txtExp.Text = txtResult.Text + " ÷ ";
+            op = '/';
+            opFlag = true;
+        }
+
+        private void btnResult_Click(object sender, EventArgs e)
+        {
+            PerformOperation();
+            txtExp.Text = "";
+        }
+
+        private void PerformOperation()
+        {
+            long currentInput = long.Parse(ConvertingNum);
+
+            switch (op)
+            {
+                case '+':
+                    rValue += currentInput;
+                    break;
+                case '-':
+                    rValue -= currentInput;
+                    break;
+                case '*':
+                    rValue *= currentInput;
+                    break;
+                case '/':
+                    if (currentInput != 0)
+                    { 
+                        rValue /= currentInput; 
+                    }
+                    else
+                    {
+                        temporary.Text = "0으로 나눌 수 없습니다.";
+                    }
+                        
+                    break;
+                default:
+                    break;
+            }
+
+            if (op != '\0') // PerformOperation 초기 호출 시에는 초기화하지 않도록
+            {
+                lValue = rValue;
+                txtResult.Text = rValue.ToString();
+            }
+        }
+
+        private void btn0_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 0, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 1 , opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 2, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn3_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 3, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn4_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 4, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn5_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 5, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn6_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 6, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn7_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 7, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn8_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 8, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
+        private void btn9_Click(object sender, EventArgs e)
+        {
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 9, opFlag, memFlag);
+            opFlag = false;
+            memFlag = false;
+        }
+
         
     }
 }

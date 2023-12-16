@@ -43,8 +43,8 @@ namespace Calculator3
         public Button btnOCT;
         public Button btnBIN;
         public TextBox temporary;
-        public bool opFlag;
-        public bool memFlag;
+        public bool opFlag = false;
+        public bool memFlag = false;
 
         public NumberButtonClickHandler(TextBox txtResult, Button btnHEX, Button btnDEC, Button btnOCT, Button btnBIN, TextBox temporary)
         {
@@ -57,13 +57,14 @@ namespace Calculator3
             
         }
 
-        public void HandleNumberButtonClick(object sender, EventArgs e, int number)
+        public void HandleNumberButtonClick(object sender, EventArgs e, int number, bool opFlag, bool memFlag)
         {
-            if (txtResult.Text == "0" || opFlag || memFlag)
+            if (txtResult.Text == "0" || opFlag == true || memFlag == true)
             {
                 txtResult.Text = number.ToString();
                 opFlag = false;
                 memFlag = false;
+
             }
             else
             {
@@ -76,6 +77,7 @@ namespace Calculator3
             btnBIN.Text += number.ToString();
             temporary.Text = txtResult.Text;
             string ConvertingNum = txtResult.Text.Replace(",", ""); // txtResult.Text에서 콤마만 제거. 마이너스는 제거X
+            
             long hex = Convert.ToInt64(ConvertingNum);
             long dec = Convert.ToInt64(ConvertingNum);
             long oct = Convert.ToInt64(ConvertingNum);
