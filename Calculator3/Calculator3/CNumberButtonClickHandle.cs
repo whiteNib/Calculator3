@@ -68,25 +68,44 @@ namespace Calculator3
             }
             else
             {
-                txtResult.Text += number.ToString();
+                string ConvertingNum = txtResult.Text.Replace(",", ""); // txtResult.Text에서 콤마만 제거. 마이너스는 제거X
+
+                // Convert.ToInt64 메서드를 사용하기 전에 오버플로 체크
+                if (long.TryParse(ConvertingNum, out long result))
+                {
+                    // 현재 값에 숫자를 추가
+                    result = result * 10 + number;
+
+                    if (result <= long.MaxValue && result.ToString().Length <= 18)
+                    {
+                        // 오버플로우가 발생하지 않으면 변환 후 텍스트 설정
+                        txtResult.Text = result.ToString();
+
+                        // 각 진법에 대한 변환 로직 추가
+                        long hex = result;
+                        long dec = result;
+                        long oct = result;
+                        long bin = result;
+
+                        toHEX(hex);
+                        toDEC(dec);
+                        toOCT(oct);
+                        toBIN(bin);
+                    }
+                    // 오버플로우가 발생한 경우 처리
+                    else
+                    {
+                        // 여기에 오버플로우에 대한 예외 처리 등을 추가할 수 있습니다.
+                        // 예를 들어, 메시지를 표시하거나 오버플로우 이전의 값으로 복원하는 등의 처리를 추가할 수 있습니다.
+                    }
+                }
+                // 변환 실패 또는 오버플로우가 발생한 경우 처리
+                else
+                {
+                    // 여기에 오버플로우에 대한 예외 처리 등을 추가할 수 있습니다.
+                    // 예를 들어, 메시지를 표시하거나 오버플로우 이전의 값으로 복원하는 등의 처리를 추가할 수 있습니다.
+                }
             }
-
-            btnHEX.Text += number.ToString();
-            btnDEC.Text += number.ToString();
-            btnOCT.Text += number.ToString();
-            btnBIN.Text += number.ToString();
-            temporary.Text = txtResult.Text;
-            string ConvertingNum = txtResult.Text.Replace(",", ""); // txtResult.Text에서 콤마만 제거. 마이너스는 제거X
-            
-            long hex = Convert.ToInt64(ConvertingNum);
-            long dec = Convert.ToInt64(ConvertingNum);
-            long oct = Convert.ToInt64(ConvertingNum);
-            long bin = Convert.ToInt64(ConvertingNum);
-
-            toHEX(hex);
-            toDEC(dec);
-            toOCT(oct);
-            toBIN(bin);
 
             temporary.Text = txtResult.Text;
         }
