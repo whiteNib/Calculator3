@@ -85,7 +85,7 @@
             this.btnPM.Location = new System.Drawing.Point(2, 445);
             this.btnPM.Name = "btnPM";
             this.btnPM.Size = new System.Drawing.Size(78, 52);
-            this.btnPM.TabIndex = 0;
+            this.btnPM.TabIndex = 99;
             this.btnPM.Text = "+/_";
             this.btnPM.UseVisualStyleBackColor = false;
             this.btnPM.Click += new System.EventHandler(this.btnPM_Click);
@@ -130,7 +130,7 @@
             this.btnResult.Location = new System.Drawing.Point(239, 445);
             this.btnResult.Name = "btnResult";
             this.btnResult.Size = new System.Drawing.Size(78, 52);
-            this.btnResult.TabIndex = 3;
+            this.btnResult.TabIndex = 0;
             this.btnResult.Text = "=";
             this.btnResult.UseVisualStyleBackColor = false;
             this.btnResult.Click += new System.EventHandler(this.btnResult_Click);

@@ -16,8 +16,10 @@ namespace Calculator3
     {
         public bool isPanel2Visible = false;// 메모리 영역 플래그
         public long lValue;// 연산 전 초기 입력값
+        public long rValue = 0;// 연산 입력 후 입력값
         public char op = '\0';// 연산 값
         public bool opFlag = false;// 연산이 입력되는지 체크하는 플래그
+        public bool resultFlag;
         public string memory;// 메모리값
         public bool memFlag = false;// 메모리가 입력되는지 체크하는 플래그
         public CheckBox[] bitCheckBoxes;// 체크박스 정의
@@ -29,8 +31,8 @@ namespace Calculator3
         string ConvertingNum ="0";// 진수 변환된 숫자 값
         public NumberButtonClickHandler numberButtonClickHandler;// 클래스 호출
         public int btnClickedState = 10;// 진수 변환 버튼 클릭 상태
-        private Panel dynamicPanel; // 동적으로 생성할 패널을 나타내는 변수
-        private bool isPanelVisible = false;// 비트 버튼을 클릭하면 나타나는 패널 플래그 값
+        public Panel dynamicPanel; // 동적으로 생성할 패널을 나타내는 변수
+        public bool isPanelVisible = false;// 비트 버튼을 클릭하면 나타나는 패널 플래그 값
         int y1;
         int y2;
         int y3;
@@ -38,6 +40,7 @@ namespace Calculator3
         int y5;
         int y6;
         int y7;
+        int shiftCount;
 
 
         public Form2()
@@ -82,7 +85,7 @@ namespace Calculator3
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel1);
 
             // NumberButtonClickHandler 클래스의 인스턴스를 생성하고 필요한 컨트롤을 전달
-            numberButtonClickHandler = new NumberButtonClickHandler(txtResult, btnHEX, btnDEC, btnOCT, btnBIN, temporary);
+            numberButtonClickHandler = new NumberButtonClickHandler(txtResult, btnHEX, btnDEC, btnOCT, btnBIN, temporary, txtExp);
 
             InitializeDynamicPanel();
 
@@ -397,6 +400,23 @@ namespace Calculator3
             }
 
         }
+        private void btnLsh_Click(object sender, EventArgs e)
+        {
+            lValue = long.Parse(ConvertingNum);
+            txtExp.Text = txtResult.Text + " Lsh ";
+            opFlag = true;
+            resultFlag = false;
+            op = '<';
+        }
+
+        private void btnRsh_Click(object sender, EventArgs e)
+        {
+            lValue = long.Parse(ConvertingNum);
+            txtExp.Text = txtResult.Text + " Rsh ";
+            opFlag = true;
+            resultFlag = false;
+            op = '>';
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             
@@ -571,7 +591,6 @@ namespace Calculator3
 
             numberButtonClickHandler.toBIN(bin);
         }
-
         
         private void btnFormationConvert_Click(object sender, EventArgs e)
         {
@@ -650,8 +669,6 @@ namespace Calculator3
             
         }
 
-        private long rValue = 0;
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             lValue = long.Parse(ConvertingNum);
@@ -696,6 +713,7 @@ namespace Calculator3
         private void btnResult_Click(object sender, EventArgs e)
         {
             rValue = long.Parse(ConvertingNum);
+            shiftCount = Convert.ToInt32(rValue);
             if (temporary.Text == "0으로 나눌 수 없습니다")
             {
                this.btnAllClear.PerformClick();
@@ -710,14 +728,20 @@ namespace Calculator3
                 case '+':
                     txtResult.Text = (lValue + rValue).ToString();
                     txtExp.Text = lValue + " + " + rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '-':
                     txtResult.Text = (lValue - rValue).ToString();
                     txtExp.Text = lValue + " - " + rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '*':
                     txtResult.Text = (lValue * rValue).ToString();
                     txtExp.Text = lValue + " × " + rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '/':
                     if (rValue == 0)
@@ -729,6 +753,8 @@ namespace Calculator3
                         txtResult.Text = (lValue / rValue).ToString();
                         txtExp.Text = lValue + " ÷ " + rValue + " = ";
                     }
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '%':
                     if (rValue == 0)
@@ -740,36 +766,70 @@ namespace Calculator3
                         txtResult.Text = (lValue % rValue).ToString();
                         txtExp.Text = lValue + " % " + rValue + " = ";
                     }
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '&':
                     // AND 연산 수행
                     txtResult.Text = (lValue & rValue).ToString();
                     txtExp.Text = lValue + " AND " + rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '|':
                     // OR 연산 수행
                     txtResult.Text = (lValue | rValue).ToString();
                     txtExp.Text = lValue + " OR " + rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '~':
                     // NOT 연산 수행
                     txtResult.Text = (~lValue).ToString();
                     txtExp.Text = "NOT(" + lValue + ")";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '@':
                     // NAND 연산 수행
                     txtResult.Text = (~(lValue & rValue)).ToString();
                     txtExp.Text = lValue + " NAND " + rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '#':
                     // NOR 연산 수행
                     txtResult.Text = (~(lValue | rValue)).ToString();
                     txtExp.Text = lValue + " NOR " + rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
                 case '$':
                     // XOR 연산 수행
                     txtResult.Text = (lValue ^ rValue).ToString();
                     txtExp.Text = lValue + " XOR " + rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
+                    break;
+                case '<':
+                    // rValue를 왼쪽으로 시프트
+                    lValue <<= shiftCount;
+
+                    // 결과를 텍스트 상자에 표시
+                    txtResult.Text = lValue.ToString();
+                    txtExp.Text += rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
+                    break;
+                case '>':
+                    // rValue를 왼쪽으로 시프트
+                    lValue >>= shiftCount;
+
+                    // 결과를 텍스트 상자에 표시
+                    txtResult.Text = lValue.ToString();
+                    txtExp.Text += rValue + " = ";
+                    opFlag = true;
+                    resultFlag = true;
                     break;
             }
             //txtExp.Text = txtExp.Text + rValue + "=";
@@ -780,72 +840,82 @@ namespace Calculator3
 
         private void btn0_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 0, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 0, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 1 , opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 1 , opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 2, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 2, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn3_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 3, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 3, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 4, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 4, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 5, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 5, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 6, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 6, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn7_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 7, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 7, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn8_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 8, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 8, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
 
         private void btn9_Click(object sender, EventArgs e)
         {
-            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 9, opFlag, memFlag);
+            numberButtonClickHandler.HandleNumberButtonClick(sender, e, 9, opFlag, memFlag, resultFlag);
             opFlag = false;
             memFlag = false;
+            resultFlag = false;
         }
         private void InitializeDynamicPanel()
         {
@@ -1033,14 +1103,31 @@ namespace Calculator3
             txtResult.Text = ((Button)sender).Text;
         }
 
+        private Panel memoryPanel; // 클래스 레벨에서 선언
+
         private void btnMS_Click(object sender, EventArgs e)
         {
+            memoryStateLabel.Visible = false;
             // Panel2의 스크롤을 최상단으로 이동
             splitContainer1.Panel2.VerticalScroll.Value = 0;
 
             memory = txtResult.Text;
             btnMhistory.Enabled = true;
             memFlag = true;
+
+            // 최초 클릭 시 패널 생성
+            if (memoryPanel == null)
+            {
+                memoryPanel = new Panel();
+                memoryPanel.Dock = DockStyle.Top;
+                memoryPanel.Size = new Size(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height*82/100);
+                memoryPanel.AutoScroll = true;
+
+                
+
+                splitContainer1.Panel2.Controls.Add(memoryPanel);
+                splitContainer1.Panel2.Controls.Add(btnMemoryTitle);
+            }
 
             // Button을 생성하고 속성 설정
             Button btnMemory = new Button();
@@ -1057,18 +1144,18 @@ namespace Calculator3
             btnYCoordinate -= btnMemory.Height + btnHeightOffset;
 
             // 가장 위 버튼의 Y좌표가 0 미만이면 0으로 설정
-            if (btnYCoordinate < 60)
+            if (btnYCoordinate < 0)
             {
-                btnYCoordinate = 60;
+                btnYCoordinate = 0;
             }
 
             btnMemory.Location = new Point(0, btnYCoordinate);
 
             // 새로운 Button을 Panel2에 추가
-            splitContainer1.Panel2.Controls.Add(btnMemory);
+            memoryPanel.Controls.Add(btnMemory);
 
             // 다른 Button들도 함께 내려가도록 조정
-            foreach (Control control in splitContainer1.Panel2.Controls)
+            foreach (Control control in memoryPanel.Controls)
             {
                 if (control is Button && control != btnMemory)
                 {
@@ -1080,18 +1167,17 @@ namespace Calculator3
             // 가로 스크롤 비활성화
             splitContainer1.Panel2.HorizontalScroll.Enabled = false;
             splitContainer1.Panel2.HorizontalScroll.Visible = false;
-
         }
-
-        private void btnLsh_Click(object sender, EventArgs e)
+        private void BtnRemoveMemory_Click(object sender, EventArgs e)
         {
-
+            if (memoryPanel != null)
+            {
+                // 모든 버튼 제거
+                memoryPanel.Controls.Clear();
+                memoryStateLabel.Visible = true;
+                memoryStateLabel.Dock = DockStyle.Top;
+                splitContainer1.Panel2.Controls.Remove(memoryPanel);
+            }
         }
-
-        private void btnRsh_Click(object sender, EventArgs e)
-        {
-
-        }
-        
     }
 }

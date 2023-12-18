@@ -43,9 +43,11 @@ namespace Calculator3
         public Button btnOCT;
         public Button btnBIN;
         public TextBox temporary;
+        public TextBox txtExp;
         public bool opFlag = false;
         public bool memFlag = false;
-        public NumberButtonClickHandler(TextBox txtResult, Button btnHEX, Button btnDEC, Button btnOCT, Button btnBIN, TextBox temporary)
+        public bool resultFlag = false;
+        public NumberButtonClickHandler(TextBox txtResult, Button btnHEX, Button btnDEC, Button btnOCT, Button btnBIN, TextBox temporary, TextBox txtExp)
         {
             this.txtResult = txtResult;
             this.btnHEX = btnHEX;
@@ -53,17 +55,23 @@ namespace Calculator3
             this.btnOCT = btnOCT;
             this.btnBIN = btnBIN;
             this.temporary = temporary;
+            this.txtExp = txtExp;
             
         }
         long result;
-        public void HandleNumberButtonClick(object sender, EventArgs e, int number, bool opFlag, bool memFlag)
+        public void HandleNumberButtonClick(object sender, EventArgs e, int number, bool opFlag, bool memFlag, bool resultFlag)
         {
+            
             if (txtResult.Text == "0" || opFlag == true || memFlag == true)
             {
+                if (resultFlag == true)
+                {
+                    txtExp.Text = "";
+                }
                 txtResult.Text = number.ToString();
                 opFlag = false;
                 memFlag = false;
-
+                resultFlag = false;
             }
             else
             {
