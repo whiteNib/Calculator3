@@ -45,7 +45,6 @@ namespace Calculator3
         public TextBox temporary;
         public bool opFlag = false;
         public bool memFlag = false;
-
         public NumberButtonClickHandler(TextBox txtResult, Button btnHEX, Button btnDEC, Button btnOCT, Button btnBIN, TextBox temporary)
         {
             this.txtResult = txtResult;
@@ -56,7 +55,7 @@ namespace Calculator3
             this.temporary = temporary;
             
         }
-
+        long result;
         public void HandleNumberButtonClick(object sender, EventArgs e, int number, bool opFlag, bool memFlag)
         {
             if (txtResult.Text == "0" || opFlag == true || memFlag == true)
@@ -71,7 +70,7 @@ namespace Calculator3
                 string ConvertingNum = txtResult.Text.Replace(",", ""); // txtResult.Text에서 콤마만 제거. 마이너스는 제거X
 
                 // Convert.ToInt64 메서드를 사용하기 전에 오버플로 체크
-                if (long.TryParse(ConvertingNum, out long result))
+                if (long.TryParse(ConvertingNum, out result))
                 {
                     // 현재 값에 숫자를 추가
                     result = result * 10 + number;

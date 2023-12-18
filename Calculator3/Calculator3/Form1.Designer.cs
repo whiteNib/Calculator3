@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnPM = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
             this.btnDot = new System.Windows.Forms.Button();
@@ -63,6 +64,11 @@
             this.txtExp = new System.Windows.Forms.TextBox();
             this.btnOption = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnTitle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnOptionClose = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -76,10 +82,9 @@
             this.btnPM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPM.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnPM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnPM.Location = new System.Drawing.Point(3, 668);
-            this.btnPM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPM.Location = new System.Drawing.Point(2, 445);
             this.btnPM.Name = "btnPM";
-            this.btnPM.Size = new System.Drawing.Size(111, 78);
+            this.btnPM.Size = new System.Drawing.Size(78, 52);
             this.btnPM.TabIndex = 0;
             this.btnPM.Text = "+/_";
             this.btnPM.UseVisualStyleBackColor = false;
@@ -92,10 +97,9 @@
             this.btn0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn0.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn0.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn0.Location = new System.Drawing.Point(116, 668);
-            this.btn0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn0.Location = new System.Drawing.Point(81, 445);
             this.btn0.Name = "btn0";
-            this.btn0.Size = new System.Drawing.Size(111, 78);
+            this.btn0.Size = new System.Drawing.Size(78, 52);
             this.btn0.TabIndex = 1;
             this.btn0.Text = "0";
             this.btn0.UseVisualStyleBackColor = false;
@@ -108,10 +112,9 @@
             this.btnDot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDot.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnDot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnDot.Location = new System.Drawing.Point(229, 668);
-            this.btnDot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDot.Location = new System.Drawing.Point(160, 445);
             this.btnDot.Name = "btnDot";
-            this.btnDot.Size = new System.Drawing.Size(111, 78);
+            this.btnDot.Size = new System.Drawing.Size(78, 52);
             this.btnDot.TabIndex = 2;
             this.btnDot.Text = ".";
             this.btnDot.UseVisualStyleBackColor = false;
@@ -124,10 +127,9 @@
             this.btnResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResult.Font = new System.Drawing.Font("맑은 고딕 Semilight", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnResult.ForeColor = System.Drawing.Color.White;
-            this.btnResult.Location = new System.Drawing.Point(341, 668);
-            this.btnResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResult.Location = new System.Drawing.Point(239, 445);
             this.btnResult.Name = "btnResult";
-            this.btnResult.Size = new System.Drawing.Size(111, 78);
+            this.btnResult.Size = new System.Drawing.Size(78, 52);
             this.btnResult.TabIndex = 3;
             this.btnResult.Text = "=";
             this.btnResult.UseVisualStyleBackColor = false;
@@ -140,10 +142,9 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("맑은 고딕 Semilight", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnAdd.Location = new System.Drawing.Point(341, 586);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Location = new System.Drawing.Point(239, 391);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(111, 78);
+            this.btnAdd.Size = new System.Drawing.Size(78, 52);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -156,10 +157,9 @@
             this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn3.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn3.Location = new System.Drawing.Point(229, 586);
-            this.btn3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn3.Location = new System.Drawing.Point(160, 391);
             this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(111, 78);
+            this.btn3.Size = new System.Drawing.Size(78, 52);
             this.btn3.TabIndex = 6;
             this.btn3.Text = "3";
             this.btn3.UseVisualStyleBackColor = false;
@@ -172,10 +172,9 @@
             this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn2.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn2.Location = new System.Drawing.Point(116, 586);
-            this.btn2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn2.Location = new System.Drawing.Point(81, 391);
             this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(111, 78);
+            this.btn2.Size = new System.Drawing.Size(78, 52);
             this.btn2.TabIndex = 5;
             this.btn2.Text = "2";
             this.btn2.UseVisualStyleBackColor = false;
@@ -188,10 +187,9 @@
             this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn1.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn1.Location = new System.Drawing.Point(3, 586);
-            this.btn1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn1.Location = new System.Drawing.Point(2, 391);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(111, 78);
+            this.btn1.Size = new System.Drawing.Size(78, 52);
             this.btn1.TabIndex = 4;
             this.btn1.Text = "1";
             this.btn1.UseVisualStyleBackColor = false;
@@ -204,10 +202,9 @@
             this.btnSubtract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubtract.Font = new System.Drawing.Font("맑은 고딕 Semilight", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSubtract.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnSubtract.Location = new System.Drawing.Point(341, 508);
-            this.btnSubtract.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSubtract.Location = new System.Drawing.Point(239, 339);
             this.btnSubtract.Name = "btnSubtract";
-            this.btnSubtract.Size = new System.Drawing.Size(111, 75);
+            this.btnSubtract.Size = new System.Drawing.Size(78, 50);
             this.btnSubtract.TabIndex = 11;
             this.btnSubtract.Text = "-";
             this.btnSubtract.UseVisualStyleBackColor = false;
@@ -220,10 +217,9 @@
             this.btn6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn6.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn6.Location = new System.Drawing.Point(229, 508);
-            this.btn6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn6.Location = new System.Drawing.Point(160, 339);
             this.btn6.Name = "btn6";
-            this.btn6.Size = new System.Drawing.Size(111, 75);
+            this.btn6.Size = new System.Drawing.Size(78, 50);
             this.btn6.TabIndex = 10;
             this.btn6.Text = "6";
             this.btn6.UseVisualStyleBackColor = false;
@@ -236,10 +232,9 @@
             this.btn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn5.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn5.Location = new System.Drawing.Point(116, 508);
-            this.btn5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn5.Location = new System.Drawing.Point(81, 339);
             this.btn5.Name = "btn5";
-            this.btn5.Size = new System.Drawing.Size(111, 75);
+            this.btn5.Size = new System.Drawing.Size(78, 50);
             this.btn5.TabIndex = 9;
             this.btn5.Text = "5";
             this.btn5.UseVisualStyleBackColor = false;
@@ -252,10 +247,9 @@
             this.btn4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn4.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn4.Location = new System.Drawing.Point(3, 508);
-            this.btn4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn4.Location = new System.Drawing.Point(2, 339);
             this.btn4.Name = "btn4";
-            this.btn4.Size = new System.Drawing.Size(111, 75);
+            this.btn4.Size = new System.Drawing.Size(78, 50);
             this.btn4.TabIndex = 8;
             this.btn4.Text = "4";
             this.btn4.UseVisualStyleBackColor = false;
@@ -268,10 +262,9 @@
             this.btnMultiply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMultiply.Font = new System.Drawing.Font("맑은 고딕 Semilight", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnMultiply.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnMultiply.Location = new System.Drawing.Point(341, 430);
-            this.btnMultiply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMultiply.Location = new System.Drawing.Point(239, 287);
             this.btnMultiply.Name = "btnMultiply";
-            this.btnMultiply.Size = new System.Drawing.Size(111, 75);
+            this.btnMultiply.Size = new System.Drawing.Size(78, 50);
             this.btnMultiply.TabIndex = 15;
             this.btnMultiply.Text = "×";
             this.btnMultiply.UseVisualStyleBackColor = false;
@@ -284,10 +277,9 @@
             this.btn9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn9.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn9.Location = new System.Drawing.Point(229, 430);
-            this.btn9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn9.Location = new System.Drawing.Point(160, 287);
             this.btn9.Name = "btn9";
-            this.btn9.Size = new System.Drawing.Size(111, 75);
+            this.btn9.Size = new System.Drawing.Size(78, 50);
             this.btn9.TabIndex = 14;
             this.btn9.Text = "9";
             this.btn9.UseVisualStyleBackColor = false;
@@ -300,10 +292,9 @@
             this.btn8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn8.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn8.Location = new System.Drawing.Point(116, 430);
-            this.btn8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn8.Location = new System.Drawing.Point(81, 287);
             this.btn8.Name = "btn8";
-            this.btn8.Size = new System.Drawing.Size(111, 75);
+            this.btn8.Size = new System.Drawing.Size(78, 50);
             this.btn8.TabIndex = 13;
             this.btn8.Text = "8";
             this.btn8.UseVisualStyleBackColor = false;
@@ -316,10 +307,9 @@
             this.btn7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn7.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn7.Location = new System.Drawing.Point(3, 430);
-            this.btn7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn7.Location = new System.Drawing.Point(2, 287);
             this.btn7.Name = "btn7";
-            this.btn7.Size = new System.Drawing.Size(111, 75);
+            this.btn7.Size = new System.Drawing.Size(78, 50);
             this.btn7.TabIndex = 12;
             this.btn7.Text = "7";
             this.btn7.UseVisualStyleBackColor = false;
@@ -332,10 +322,9 @@
             this.btnDivide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDivide.Font = new System.Drawing.Font("맑은 고딕 Semilight", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnDivide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnDivide.Location = new System.Drawing.Point(341, 352);
-            this.btnDivide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDivide.Location = new System.Drawing.Point(239, 235);
             this.btnDivide.Name = "btnDivide";
-            this.btnDivide.Size = new System.Drawing.Size(111, 75);
+            this.btnDivide.Size = new System.Drawing.Size(78, 50);
             this.btnDivide.TabIndex = 19;
             this.btnDivide.Text = "÷";
             this.btnDivide.UseVisualStyleBackColor = false;
@@ -348,10 +337,9 @@
             this.btnSqrt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSqrt.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSqrt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnSqrt.Location = new System.Drawing.Point(229, 352);
-            this.btnSqrt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSqrt.Location = new System.Drawing.Point(160, 235);
             this.btnSqrt.Name = "btnSqrt";
-            this.btnSqrt.Size = new System.Drawing.Size(111, 75);
+            this.btnSqrt.Size = new System.Drawing.Size(78, 50);
             this.btnSqrt.TabIndex = 18;
             this.btnSqrt.Text = "√";
             this.btnSqrt.UseVisualStyleBackColor = false;
@@ -364,10 +352,9 @@
             this.btnSquare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSquare.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSquare.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnSquare.Location = new System.Drawing.Point(116, 352);
-            this.btnSquare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSquare.Location = new System.Drawing.Point(81, 235);
             this.btnSquare.Name = "btnSquare";
-            this.btnSquare.Size = new System.Drawing.Size(111, 75);
+            this.btnSquare.Size = new System.Drawing.Size(78, 50);
             this.btnSquare.TabIndex = 17;
             this.btnSquare.Text = "x²";
             this.btnSquare.UseVisualStyleBackColor = false;
@@ -380,10 +367,9 @@
             this.btnReciprocal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReciprocal.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnReciprocal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnReciprocal.Location = new System.Drawing.Point(3, 352);
-            this.btnReciprocal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReciprocal.Location = new System.Drawing.Point(2, 235);
             this.btnReciprocal.Name = "btnReciprocal";
-            this.btnReciprocal.Size = new System.Drawing.Size(111, 75);
+            this.btnReciprocal.Size = new System.Drawing.Size(78, 50);
             this.btnReciprocal.TabIndex = 16;
             this.btnReciprocal.Text = "1/x";
             this.btnReciprocal.UseVisualStyleBackColor = false;
@@ -396,10 +382,9 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnDelete.Location = new System.Drawing.Point(341, 274);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(239, 183);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(111, 75);
+            this.btnDelete.Size = new System.Drawing.Size(78, 50);
             this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "⌫";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -412,10 +397,9 @@
             this.btnAllClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAllClear.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnAllClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnAllClear.Location = new System.Drawing.Point(229, 274);
-            this.btnAllClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAllClear.Location = new System.Drawing.Point(160, 183);
             this.btnAllClear.Name = "btnAllClear";
-            this.btnAllClear.Size = new System.Drawing.Size(111, 75);
+            this.btnAllClear.Size = new System.Drawing.Size(78, 50);
             this.btnAllClear.TabIndex = 22;
             this.btnAllClear.Text = "C";
             this.btnAllClear.UseVisualStyleBackColor = false;
@@ -428,10 +412,9 @@
             this.btnClearEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearEntry.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnClearEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnClearEntry.Location = new System.Drawing.Point(116, 274);
-            this.btnClearEntry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClearEntry.Location = new System.Drawing.Point(81, 183);
             this.btnClearEntry.Name = "btnClearEntry";
-            this.btnClearEntry.Size = new System.Drawing.Size(111, 75);
+            this.btnClearEntry.Size = new System.Drawing.Size(78, 50);
             this.btnClearEntry.TabIndex = 21;
             this.btnClearEntry.Text = "CE";
             this.btnClearEntry.UseVisualStyleBackColor = false;
@@ -444,10 +427,9 @@
             this.btnPercent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPercent.Font = new System.Drawing.Font("맑은 고딕 Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnPercent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnPercent.Location = new System.Drawing.Point(3, 274);
-            this.btnPercent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPercent.Location = new System.Drawing.Point(2, 183);
             this.btnPercent.Name = "btnPercent";
-            this.btnPercent.Size = new System.Drawing.Size(111, 75);
+            this.btnPercent.Size = new System.Drawing.Size(78, 50);
             this.btnPercent.TabIndex = 20;
             this.btnPercent.Text = "%";
             this.btnPercent.UseVisualStyleBackColor = false;
@@ -459,10 +441,9 @@
             this.btnMC.FlatAppearance.BorderSize = 0;
             this.btnMC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMC.Font = new System.Drawing.Font("맑은 고딕 Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMC.Location = new System.Drawing.Point(3, 218);
-            this.btnMC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMC.Location = new System.Drawing.Point(2, 145);
             this.btnMC.Name = "btnMC";
-            this.btnMC.Size = new System.Drawing.Size(71, 48);
+            this.btnMC.Size = new System.Drawing.Size(50, 32);
             this.btnMC.TabIndex = 24;
             this.btnMC.Text = "MC";
             this.btnMC.UseVisualStyleBackColor = true;
@@ -474,10 +455,9 @@
             this.btnMR.FlatAppearance.BorderSize = 0;
             this.btnMR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMR.Font = new System.Drawing.Font("맑은 고딕 Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMR.Location = new System.Drawing.Point(80, 218);
-            this.btnMR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMR.Location = new System.Drawing.Point(56, 145);
             this.btnMR.Name = "btnMR";
-            this.btnMR.Size = new System.Drawing.Size(71, 48);
+            this.btnMR.Size = new System.Drawing.Size(50, 32);
             this.btnMR.TabIndex = 25;
             this.btnMR.Text = "MR";
             this.btnMR.UseVisualStyleBackColor = true;
@@ -489,10 +469,9 @@
             this.btnMplus.FlatAppearance.BorderSize = 0;
             this.btnMplus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMplus.Font = new System.Drawing.Font("맑은 고딕 Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMplus.Location = new System.Drawing.Point(156, 218);
-            this.btnMplus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMplus.Location = new System.Drawing.Point(109, 145);
             this.btnMplus.Name = "btnMplus";
-            this.btnMplus.Size = new System.Drawing.Size(71, 48);
+            this.btnMplus.Size = new System.Drawing.Size(50, 32);
             this.btnMplus.TabIndex = 26;
             this.btnMplus.Text = "M+";
             this.btnMplus.UseVisualStyleBackColor = true;
@@ -504,10 +483,9 @@
             this.btnMminus.FlatAppearance.BorderSize = 0;
             this.btnMminus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMminus.Font = new System.Drawing.Font("맑은 고딕 Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMminus.Location = new System.Drawing.Point(229, 218);
-            this.btnMminus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMminus.Location = new System.Drawing.Point(160, 145);
             this.btnMminus.Name = "btnMminus";
-            this.btnMminus.Size = new System.Drawing.Size(71, 48);
+            this.btnMminus.Size = new System.Drawing.Size(50, 32);
             this.btnMminus.TabIndex = 27;
             this.btnMminus.Text = "M-";
             this.btnMminus.UseVisualStyleBackColor = true;
@@ -519,10 +497,9 @@
             this.btnMS.FlatAppearance.BorderSize = 0;
             this.btnMS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMS.Font = new System.Drawing.Font("맑은 고딕 Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMS.Location = new System.Drawing.Point(304, 218);
-            this.btnMS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMS.Location = new System.Drawing.Point(213, 145);
             this.btnMS.Name = "btnMS";
-            this.btnMS.Size = new System.Drawing.Size(71, 48);
+            this.btnMS.Size = new System.Drawing.Size(50, 32);
             this.btnMS.TabIndex = 28;
             this.btnMS.Text = "MS";
             this.btnMS.UseVisualStyleBackColor = true;
@@ -534,10 +511,9 @@
             this.btnMhistory.FlatAppearance.BorderSize = 0;
             this.btnMhistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMhistory.Font = new System.Drawing.Font("맑은 고딕 Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMhistory.Location = new System.Drawing.Point(381, 218);
-            this.btnMhistory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMhistory.Location = new System.Drawing.Point(267, 145);
             this.btnMhistory.Name = "btnMhistory";
-            this.btnMhistory.Size = new System.Drawing.Size(71, 48);
+            this.btnMhistory.Size = new System.Drawing.Size(50, 32);
             this.btnMhistory.TabIndex = 29;
             this.btnMhistory.Text = "M∨";
             this.btnMhistory.UseVisualStyleBackColor = true;
@@ -548,11 +524,10 @@
             this.txtResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.txtResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtResult.Font = new System.Drawing.Font("맑은 고딕", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtResult.Location = new System.Drawing.Point(3, 99);
-            this.txtResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtResult.Location = new System.Drawing.Point(2, 66);
             this.txtResult.MaxLength = 16;
             this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(436, 80);
+            this.txtResult.Size = new System.Drawing.Size(305, 54);
             this.txtResult.TabIndex = 30;
             this.txtResult.Text = "0";
             this.txtResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -563,10 +538,9 @@
             this.txtExp.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtExp.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtExp.ForeColor = System.Drawing.Color.Gray;
-            this.txtExp.Location = new System.Drawing.Point(3, 74);
-            this.txtExp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtExp.Location = new System.Drawing.Point(2, 49);
             this.txtExp.Name = "txtExp";
-            this.txtExp.Size = new System.Drawing.Size(436, 30);
+            this.txtExp.Size = new System.Drawing.Size(305, 20);
             this.txtExp.TabIndex = 31;
             this.txtExp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -575,10 +549,9 @@
             this.btnOption.FlatAppearance.BorderSize = 0;
             this.btnOption.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOption.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnOption.Location = new System.Drawing.Point(3, 4);
-            this.btnOption.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOption.Location = new System.Drawing.Point(2, 3);
             this.btnOption.Name = "btnOption";
-            this.btnOption.Size = new System.Drawing.Size(57, 60);
+            this.btnOption.Size = new System.Drawing.Size(40, 40);
             this.btnOption.TabIndex = 32;
             this.btnOption.Text = "☰";
             this.btnOption.UseVisualStyleBackColor = true;
@@ -587,27 +560,126 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnTitle);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnOptionClose);
-            this.panel1.Location = new System.Drawing.Point(3, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(349, 741);
+            this.panel1.Size = new System.Drawing.Size(244, 494);
             this.panel1.TabIndex = 33;
             this.panel1.Visible = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(-2, 251);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(244, 41);
+            this.button5.TabIndex = 39;
+            this.button5.Text = "      날짜 계산";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(-2, 161);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(244, 41);
+            this.button4.TabIndex = 38;
+            this.button4.Text = "      그래프";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(-2, 71);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(244, 41);
+            this.button3.TabIndex = 37;
+            this.button3.Text = "      표준";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(-2, 116);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(244, 41);
+            this.button2.TabIndex = 36;
+            this.button2.Text = "      공학용";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btnTitle
+            // 
+            this.btnTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnTitle.Enabled = false;
+            this.btnTitle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnTitle.FlatAppearance.BorderSize = 0;
+            this.btnTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTitle.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnTitle.ForeColor = System.Drawing.Color.Black;
+            this.btnTitle.Location = new System.Drawing.Point(-2, 34);
+            this.btnTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTitle.Name = "btnTitle";
+            this.btnTitle.Size = new System.Drawing.Size(244, 41);
+            this.btnTitle.TabIndex = 35;
+            this.btnTitle.Text = "계산기";
+            this.btnTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTitle.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.No;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(0, 54);
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(-2, 206);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(349, 62);
+            this.button1.Size = new System.Drawing.Size(244, 41);
             this.button1.TabIndex = 34;
-            this.button1.Text = "프로그래머";
+            this.button1.Text = "      프로그래머";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -618,9 +690,8 @@
             this.btnOptionClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOptionClose.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnOptionClose.Location = new System.Drawing.Point(0, 0);
-            this.btnOptionClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOptionClose.Name = "btnOptionClose";
-            this.btnOptionClose.Size = new System.Drawing.Size(57, 60);
+            this.btnOptionClose.Size = new System.Drawing.Size(40, 40);
             this.btnOptionClose.TabIndex = 33;
             this.btnOptionClose.Text = "☰";
             this.btnOptionClose.UseVisualStyleBackColor = true;
@@ -632,10 +703,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(456, 752);
+            this.ClientSize = new System.Drawing.Size(319, 501);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnOption);
             this.Controls.Add(this.txtExp);
@@ -671,7 +742,7 @@
             this.Controls.Add(this.btn0);
             this.Controls.Add(this.btnPM);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "계산기";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
@@ -723,6 +794,11 @@
         public System.Windows.Forms.TextBox txtExp;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTitle;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button5;
     }
 }
 

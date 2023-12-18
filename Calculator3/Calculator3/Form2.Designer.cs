@@ -37,7 +37,7 @@
             this.btnOptionClose = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnResult = new System.Windows.Forms.Button();
-            this.button29 = new System.Windows.Forms.Button();
+            this.btnDOT = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
             this.btnPM = new System.Windows.Forms.Button();
             this.btnF = new System.Windows.Forms.Button();
@@ -57,14 +57,14 @@
             this.btn7 = new System.Windows.Forms.Button();
             this.btnC = new System.Windows.Forms.Button();
             this.btnDivide = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnRemainder = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.btnB = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAllClear = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRsh = new System.Windows.Forms.Button();
+            this.btnLsh = new System.Windows.Forms.Button();
             this.btnA = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button32 = new System.Windows.Forms.Button();
@@ -73,8 +73,8 @@
             this.btnMhistory = new System.Windows.Forms.Button();
             this.btnMS = new System.Windows.Forms.Button();
             this.btnFormationConvert = new System.Windows.Forms.Button();
-            this.button34 = new System.Windows.Forms.Button();
-            this.button33 = new System.Windows.Forms.Button();
+            this.btnBitConvertPad = new System.Windows.Forms.Button();
+            this.btnNumKeyPad = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnBIN = new System.Windows.Forms.Button();
             this.btnOCT = new System.Windows.Forms.Button();
@@ -225,10 +225,16 @@
             // 
             // txtExp
             // 
-            this.txtExp.Location = new System.Drawing.Point(73, 19);
+            this.txtExp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.txtExp.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtExp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtExp.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtExp.ForeColor = System.Drawing.Color.Gray;
+            this.txtExp.Location = new System.Drawing.Point(0, 0);
             this.txtExp.Name = "txtExp";
-            this.txtExp.Size = new System.Drawing.Size(153, 21);
+            this.txtExp.Size = new System.Drawing.Size(225, 22);
             this.txtExp.TabIndex = 37;
+            this.txtExp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtResult
             // 
@@ -236,7 +242,7 @@
             this.txtResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.txtResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtResult.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtResult.Location = new System.Drawing.Point(12, -7);
+            this.txtResult.Location = new System.Drawing.Point(12, 20);
             this.txtResult.Margin = new System.Windows.Forms.Padding(3, 3, 0, 13);
             this.txtResult.MaxLength = 60000;
             this.txtResult.Name = "txtResult";
@@ -285,7 +291,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btnResult, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.button29, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnDOT, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.btn0, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnPM, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnF, 0, 5);
@@ -305,14 +311,14 @@
             this.tableLayoutPanel1.Controls.Add(this.btn7, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnC, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnDivide, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button9, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnRemainder, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.button8, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.button7, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnB, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnDelete, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAllClear, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnRsh, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnLsh, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnA, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 173);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -347,21 +353,21 @@
             this.btnResult.UseVisualStyleBackColor = true;
             this.btnResult.Click += new System.EventHandler(this.btnResult_Click);
             // 
-            // button29
+            // btnDOT
             // 
-            this.button29.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button29.BackgroundImage")));
-            this.button29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button29.FlatAppearance.BorderSize = 0;
-            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button29.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button29.Location = new System.Drawing.Point(133, 126);
-            this.button29.Margin = new System.Windows.Forms.Padding(1);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(42, 27);
-            this.button29.TabIndex = 28;
-            this.button29.Text = ".";
-            this.button29.UseVisualStyleBackColor = true;
+            this.btnDOT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDOT.BackgroundImage")));
+            this.btnDOT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDOT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDOT.FlatAppearance.BorderSize = 0;
+            this.btnDOT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDOT.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnDOT.Location = new System.Drawing.Point(133, 126);
+            this.btnDOT.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDOT.Name = "btnDOT";
+            this.btnDOT.Size = new System.Drawing.Size(42, 27);
+            this.btnDOT.TabIndex = 28;
+            this.btnDOT.Text = ".";
+            this.btnDOT.UseVisualStyleBackColor = true;
             // 
             // btn0
             // 
@@ -692,21 +698,22 @@
             this.btnDivide.UseVisualStyleBackColor = true;
             this.btnDivide.Click += new System.EventHandler(this.btnDivide_Click);
             // 
-            // button9
+            // btnRemainder
             // 
-            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("맑은 고딕", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button9.Location = new System.Drawing.Point(133, 26);
-            this.button9.Margin = new System.Windows.Forms.Padding(1);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(42, 23);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "%";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnRemainder.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemainder.BackgroundImage")));
+            this.btnRemainder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemainder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRemainder.FlatAppearance.BorderSize = 0;
+            this.btnRemainder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemainder.Font = new System.Drawing.Font("맑은 고딕", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnRemainder.Location = new System.Drawing.Point(133, 26);
+            this.btnRemainder.Margin = new System.Windows.Forms.Padding(1);
+            this.btnRemainder.Name = "btnRemainder";
+            this.btnRemainder.Size = new System.Drawing.Size(42, 23);
+            this.btnRemainder.TabIndex = 8;
+            this.btnRemainder.Text = "%";
+            this.btnRemainder.UseVisualStyleBackColor = true;
+            this.btnRemainder.Click += new System.EventHandler(this.btnRemainder_Click);
             // 
             // button8
             // 
@@ -790,37 +797,39 @@
             this.btnAllClear.UseVisualStyleBackColor = true;
             this.btnAllClear.Click += new System.EventHandler(this.btnAllClear_Click);
             // 
-            // button3
+            // btnRsh
             // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("맑은 고딕 Semilight", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(89, 1);
-            this.button3.Margin = new System.Windows.Forms.Padding(1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(42, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "〉〉";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRsh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRsh.BackgroundImage")));
+            this.btnRsh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRsh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRsh.FlatAppearance.BorderSize = 0;
+            this.btnRsh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRsh.Font = new System.Drawing.Font("맑은 고딕 Semilight", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnRsh.Location = new System.Drawing.Point(89, 1);
+            this.btnRsh.Margin = new System.Windows.Forms.Padding(1);
+            this.btnRsh.Name = "btnRsh";
+            this.btnRsh.Size = new System.Drawing.Size(42, 23);
+            this.btnRsh.TabIndex = 2;
+            this.btnRsh.Text = "〉〉";
+            this.btnRsh.UseVisualStyleBackColor = true;
+            this.btnRsh.Click += new System.EventHandler(this.btnRsh_Click);
             // 
-            // button2
+            // btnLsh
             // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("맑은 고딕 Semilight", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(45, 1);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "〈〈";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLsh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLsh.BackgroundImage")));
+            this.btnLsh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLsh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLsh.FlatAppearance.BorderSize = 0;
+            this.btnLsh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLsh.Font = new System.Drawing.Font("맑은 고딕 Semilight", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnLsh.Location = new System.Drawing.Point(45, 1);
+            this.btnLsh.Margin = new System.Windows.Forms.Padding(1);
+            this.btnLsh.Name = "btnLsh";
+            this.btnLsh.Size = new System.Drawing.Size(42, 23);
+            this.btnLsh.TabIndex = 1;
+            this.btnLsh.Text = "〈〈";
+            this.btnLsh.UseVisualStyleBackColor = true;
+            this.btnLsh.Click += new System.EventHandler(this.btnLsh_Click);
             // 
             // btnA
             // 
@@ -844,9 +853,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66116F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.99961F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.33923F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.00003F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.99999F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.99998F));
             this.tableLayoutPanel2.Controls.Add(this.button32, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnBIT, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 146);
@@ -865,12 +874,12 @@
             this.button32.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.button32.FlatAppearance.BorderSize = 0;
             this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Location = new System.Drawing.Point(39, 2);
+            this.button32.Image = ((System.Drawing.Image)(resources.GetObject("button32.Image")));
+            this.button32.Location = new System.Drawing.Point(51, 2);
             this.button32.Margin = new System.Windows.Forms.Padding(2);
             this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(58, 23);
+            this.button32.Size = new System.Drawing.Size(71, 23);
             this.button32.TabIndex = 1;
-            this.button32.Text = "비트 시프트v";
             this.button32.UseVisualStyleBackColor = true;
             // 
             // btnBIT
@@ -882,28 +891,28 @@
             this.btnBIT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.btnBIT.FlatAppearance.BorderSize = 0;
             this.btnBIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBIT.Image = ((System.Drawing.Image)(resources.GetObject("btnBIT.Image")));
             this.btnBIT.Location = new System.Drawing.Point(2, 2);
             this.btnBIT.Margin = new System.Windows.Forms.Padding(2);
             this.btnBIT.Name = "btnBIT";
-            this.btnBIT.Size = new System.Drawing.Size(33, 23);
+            this.btnBIT.Size = new System.Drawing.Size(45, 23);
             this.btnBIT.TabIndex = 0;
-            this.btnBIT.Text = "비트v";
             this.btnBIT.UseVisualStyleBackColor = true;
             this.btnBIT.Click += new System.EventHandler(this.btnBIT_Click);
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 5;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.14286F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.42857F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.42857F));
             this.tableLayoutPanel3.Controls.Add(this.btnMhistory, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnMS, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnFormationConvert, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button34, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button33, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnBitConvertPad, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnNumKeyPad, 0, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 113);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -921,9 +930,9 @@
             this.btnMhistory.FlatAppearance.BorderSize = 0;
             this.btnMhistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMhistory.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMhistory.Location = new System.Drawing.Point(196, 3);
+            this.btnMhistory.Location = new System.Drawing.Point(207, 3);
             this.btnMhistory.Name = "btnMhistory";
-            this.btnMhistory.Size = new System.Drawing.Size(29, 27);
+            this.btnMhistory.Size = new System.Drawing.Size(18, 27);
             this.btnMhistory.TabIndex = 4;
             this.btnMhistory.Text = "Mv";
             this.btnMhistory.UseVisualStyleBackColor = true;
@@ -937,9 +946,9 @@
             this.btnMS.FlatAppearance.BorderSize = 0;
             this.btnMS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMS.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMS.Location = new System.Drawing.Point(162, 3);
+            this.btnMS.Location = new System.Drawing.Point(184, 3);
             this.btnMS.Name = "btnMS";
-            this.btnMS.Size = new System.Drawing.Size(28, 27);
+            this.btnMS.Size = new System.Drawing.Size(17, 27);
             this.btnMS.TabIndex = 3;
             this.btnMS.Text = "MS";
             this.btnMS.UseVisualStyleBackColor = true;
@@ -954,49 +963,49 @@
             this.btnFormationConvert.FlatAppearance.BorderSize = 0;
             this.btnFormationConvert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFormationConvert.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnFormationConvert.Location = new System.Drawing.Point(71, 3);
+            this.btnFormationConvert.Location = new System.Drawing.Point(123, 3);
             this.btnFormationConvert.Name = "btnFormationConvert";
-            this.btnFormationConvert.Size = new System.Drawing.Size(85, 27);
+            this.btnFormationConvert.Size = new System.Drawing.Size(55, 27);
             this.btnFormationConvert.TabIndex = 2;
             this.btnFormationConvert.Text = "QWORD";
             this.btnFormationConvert.UseVisualStyleBackColor = true;
             this.btnFormationConvert.Click += new System.EventHandler(this.btnFormationConvert_Click);
             // 
-            // button34
+            // btnBitConvertPad
             // 
-            this.button34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnBitConvertPad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button34.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button34.BackgroundImage")));
-            this.button34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button34.FlatAppearance.BorderSize = 0;
-            this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button34.Location = new System.Drawing.Point(37, 3);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(28, 27);
-            this.button34.TabIndex = 1;
-            this.button34.UseVisualStyleBackColor = true;
-            this.button34.Click += new System.EventHandler(this.button34_Click);
-            this.button34.MouseLeave += new System.EventHandler(this.button34_MouseLeave);
-            this.button34.MouseHover += new System.EventHandler(this.button34_MouseHover);
+            this.btnBitConvertPad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBitConvertPad.BackgroundImage")));
+            this.btnBitConvertPad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBitConvertPad.FlatAppearance.BorderSize = 0;
+            this.btnBitConvertPad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBitConvertPad.Location = new System.Drawing.Point(63, 3);
+            this.btnBitConvertPad.Name = "btnBitConvertPad";
+            this.btnBitConvertPad.Size = new System.Drawing.Size(54, 27);
+            this.btnBitConvertPad.TabIndex = 1;
+            this.btnBitConvertPad.UseVisualStyleBackColor = true;
+            this.btnBitConvertPad.Click += new System.EventHandler(this.btnBitConvertPad_Click);
+            this.btnBitConvertPad.MouseLeave += new System.EventHandler(this.btnBitConvertPad_MouseLeave);
+            this.btnBitConvertPad.MouseHover += new System.EventHandler(this.btnBitConvertPad_MouseHover);
             // 
-            // button33
+            // btnNumKeyPad
             // 
-            this.button33.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnNumKeyPad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button33.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button33.BackgroundImage")));
-            this.button33.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button33.FlatAppearance.BorderSize = 0;
-            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button33.Location = new System.Drawing.Point(3, 3);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(28, 27);
-            this.button33.TabIndex = 0;
-            this.button33.UseVisualStyleBackColor = true;
-            this.button33.Click += new System.EventHandler(this.button33_Click);
-            this.button33.MouseLeave += new System.EventHandler(this.button33_MouseLeave);
-            this.button33.MouseHover += new System.EventHandler(this.button33_MouseHover);
+            this.btnNumKeyPad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnNumKeyPad.FlatAppearance.BorderSize = 0;
+            this.btnNumKeyPad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNumKeyPad.Image = ((System.Drawing.Image)(resources.GetObject("btnNumKeyPad.Image")));
+            this.btnNumKeyPad.Location = new System.Drawing.Point(3, 3);
+            this.btnNumKeyPad.Name = "btnNumKeyPad";
+            this.btnNumKeyPad.Size = new System.Drawing.Size(54, 27);
+            this.btnNumKeyPad.TabIndex = 0;
+            this.btnNumKeyPad.UseVisualStyleBackColor = true;
+            this.btnNumKeyPad.Click += new System.EventHandler(this.btnNumKeyPad_Click);
+            this.btnNumKeyPad.MouseLeave += new System.EventHandler(this.btnNumKeyPad_MouseLeave);
+            this.btnNumKeyPad.MouseHover += new System.EventHandler(this.btnNumKeyPad_MouseHover);
             // 
             // tableLayoutPanel4
             // 
@@ -2306,7 +2315,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnResult;
-        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button btnDOT;
         private System.Windows.Forms.Button btn0;
         private System.Windows.Forms.Button btnPM;
         private System.Windows.Forms.Button btnF;
@@ -2326,14 +2335,14 @@
         private System.Windows.Forms.Button btn7;
         private System.Windows.Forms.Button btnC;
         private System.Windows.Forms.Button btnDivide;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnRemainder;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnB;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAllClear;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRsh;
+        private System.Windows.Forms.Button btnLsh;
         private System.Windows.Forms.Button btnA;
         private System.Windows.Forms.Label label1;
         
@@ -2342,8 +2351,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnMS;
         private System.Windows.Forms.Button btnFormationConvert;
-        private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button btnBitConvertPad;
+        private System.Windows.Forms.Button btnNumKeyPad;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnBIN;
         private System.Windows.Forms.Button btnOCT;

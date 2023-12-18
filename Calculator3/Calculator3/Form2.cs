@@ -28,7 +28,7 @@ namespace Calculator3
         int FormationConvert = 0;// 비트 전환 키패트의 체크박스 비활성화 코드
         string ConvertingNum ="0";// 진수 변환된 숫자 값
         public NumberButtonClickHandler numberButtonClickHandler;// 클래스 호출
-        int btnClickedState = 10;// 진수 변환 버튼 클릭 상태
+        public int btnClickedState = 10;// 진수 변환 버튼 클릭 상태
         private Panel dynamicPanel; // 동적으로 생성할 패널을 나타내는 변수
         private bool isPanelVisible = false;// 비트 버튼을 클릭하면 나타나는 패널 플래그 값
         int y1;
@@ -192,6 +192,8 @@ namespace Calculator3
             tableLayoutPanel3.Dock = DockStyle.Bottom;
             tableLayoutPanel4.Dock = DockStyle.Bottom;
             txtResult.Dock = DockStyle.Bottom;
+            temporary.Dock = DockStyle.Bottom;
+            txtExp.Dock = DockStyle.Bottom;
 
             btnHEX.Text = "HEX  0";
             btnDEC.Text = "DEC  0";
@@ -429,41 +431,28 @@ namespace Calculator3
             // 텍스트 박스를 클릭할 때 다른 컨트롤에 포커스를 이동시켜 커서를 가리키지 않도록 함
         }
 
-        private void button33_MouseHover(object sender, EventArgs e)
+        private void btnNumKeyPad_MouseHover(object sender, EventArgs e)
         {
-            button33.BackgroundImage = pictureBox1.Image;
+            //btnNumKeyPad.BackgroundImage = pictureBox1.Image;
         }
 
-        private void button33_MouseLeave(object sender, EventArgs e)
+        private void btnNumKeyPad_MouseLeave(object sender, EventArgs e)
         {
-            button33.BackgroundImage = pictureBox2.Image;
+            //btnNumKeyPad.BackgroundImage = pictureBox2.Image;
         }
 
-        private void button34_MouseHover(object sender, EventArgs e)
+        private void btnBitConvertPad_MouseHover(object sender, EventArgs e)
         {
-            button34.BackgroundImage = pictureBox3.Image;
+            btnBitConvertPad.BackgroundImage = pictureBox3.Image;
         }
 
-        private void button34_MouseLeave(object sender, EventArgs e)
+        private void btnBitConvertPad_MouseLeave(object sender, EventArgs e)
         {
-            button34.BackgroundImage = pictureBox4.Image;
+            btnBitConvertPad.BackgroundImage = pictureBox4.Image;
         }
 
-        private void button34_Click(object sender, EventArgs e)
-        {
-            tableLayoutPanel1.Visible = false;
-            tableLayoutPanel2.Visible = false;
-            flowLayoutPanelBits8.Visible = true;
-            flowLayoutPanelBits7.Visible = true;
-            flowLayoutPanelBits6.Visible = true;
-            flowLayoutPanelBits5.Visible = true;
-            flowLayoutPanelBits4.Visible = true;
-            flowLayoutPanelBits3.Visible = true;
-            flowLayoutPanelBits2.Visible = true;
-            flowLayoutPanelBits1.Visible = true;
-        }
-
-        private void button33_Click(object sender, EventArgs e)
+        
+        private void btnNumKeyPad_Click(object sender, EventArgs e)
         {
             tableLayoutPanel1.Visible = true;
             tableLayoutPanel2.Visible = true;
@@ -475,6 +464,20 @@ namespace Calculator3
             flowLayoutPanelBits3.Visible = false;
             flowLayoutPanelBits2.Visible = false;
             flowLayoutPanelBits1.Visible = false;
+        }
+
+        private void btnBitConvertPad_Click(object sender, EventArgs e)
+        {
+            tableLayoutPanel1.Visible = false;
+            tableLayoutPanel2.Visible = false;
+            flowLayoutPanelBits8.Visible = true;
+            flowLayoutPanelBits7.Visible = true;
+            flowLayoutPanelBits6.Visible = true;
+            flowLayoutPanelBits5.Visible = true;
+            flowLayoutPanelBits4.Visible = true;
+            flowLayoutPanelBits3.Visible = true;
+            flowLayoutPanelBits2.Visible = true;
+            flowLayoutPanelBits1.Visible = true;
         }
 
         private void txtResult_TextChanged(object sender, EventArgs e)
@@ -496,31 +499,6 @@ namespace Calculator3
         private void btnHEX_Click(object sender, EventArgs e)
         {
             btnClickedState = 16;
-            //// 보라색의 Color 객체를 생성
-            //Color lineColor = Color.Purple;
-
-            //// 직사각형 선을 그리기 위한 좌표와 크기 계산
-            //int lineThickness = 3; // 선의 두께
-            //int lineHeight = (int)(btnHEX.Height * 0.6); // 선의 높이를 1.5로 조절
-            //int lineX = 0; // 선의 X 좌표 (버튼의 왼쪽에 그릴 것이므로 0)
-            //int lineY = (int)(lineThickness / 0.75); // 선의 Y 좌표 (선의 중간에 맞게 조절)
-
-            //// GraphicsPath를 사용하여 라운드를 가진 도형을 정의
-            //using (GraphicsPath path = new GraphicsPath())
-            //{
-            //    // AddRectangle 메서드로 직사각형을 추가하고
-            //    // AddRectangle 메서드의 두 번째 매개변수를 통해 라운드를 조절
-            //    path.AddRectangle(new Rectangle(lineX, lineY, lineThickness, lineHeight));
-
-            //    // 선 그리기 (라운드가 있는 도형)
-            //    using (Pen pen = new Pen(lineColor, lineThickness))
-            //    {
-            //        using (Graphics g = btnHEX.CreateGraphics())
-            //        {
-            //            g.DrawPath(pen, path);
-            //        }
-            //    }
-            //}
 
             btnA.Enabled = true;
             btnB.Enabled = true;
@@ -632,11 +610,9 @@ namespace Calculator3
                 if (!enabled)
                 {
                     bitCheckBoxes[i].Checked = false;
-                    bitCheckBoxes[i].ForeColor = Color.FromArgb(200, 200, 200); // 텍스트 색상 변경
                 }
                 else
                 {
-                    bitCheckBoxes[i].ForeColor = Color.Black; // 텍스트 색상을 블랙으로 변경
                 }
             }
         }
@@ -645,7 +621,7 @@ namespace Calculator3
         {
             txtResult.Text = "0";
             temporary.Text = "0";
-            //txtExp.Text = "";
+            txtExp.Text = "";
             lValue = 0;
             op = '\0';
             opFlag = false;
@@ -709,50 +685,94 @@ namespace Calculator3
             opFlag = true;
         }
 
+        private void btnRemainder_Click(object sender, EventArgs e)
+        {
+            lValue = long.Parse(ConvertingNum);
+            txtExp.Text = txtResult.Text + " % ";
+            op = '%';
+            opFlag = true;
+        }
+
         private void btnResult_Click(object sender, EventArgs e)
         {
-            long rValue = long.Parse(ConvertingNum);
+            rValue = long.Parse(ConvertingNum);
+            if (temporary.Text == "0으로 나눌 수 없습니다")
+            {
+               this.btnAllClear.PerformClick();
+            }
+            if (temporary.Text == "정의되지 않은 결과입니다.")
+            {
+                this.btnAllClear.PerformClick();
+            }
             
             switch (op)
             {
                 case '+':
                     txtResult.Text = (lValue + rValue).ToString();
+                    txtExp.Text = lValue + " + " + rValue + " = ";
                     break;
                 case '-':
                     txtResult.Text = (lValue - rValue).ToString();
+                    txtExp.Text = lValue + " - " + rValue + " = ";
                     break;
                 case '*':
                     txtResult.Text = (lValue * rValue).ToString();
+                    txtExp.Text = lValue + " × " + rValue + " = ";
                     break;
                 case '/':
-                    txtResult.Text = (lValue / rValue).ToString();
+                    if (rValue == 0)
+                    {
+                        temporary.Text = "0으로 나눌 수 없습니다";
+                    }
+                    else
+                    {
+                        txtResult.Text = (lValue / rValue).ToString();
+                        txtExp.Text = lValue + " ÷ " + rValue + " = ";
+                    }
+                    break;
+                case '%':
+                    if (rValue == 0)
+                    {
+                        temporary.Text = "정의되지 않은 결과입니다.";
+                    }
+                    else
+                    {
+                        txtResult.Text = (lValue % rValue).ToString();
+                        txtExp.Text = lValue + " % " + rValue + " = ";
+                    }
                     break;
                 case '&':
                     // AND 연산 수행
                     txtResult.Text = (lValue & rValue).ToString();
+                    txtExp.Text = lValue + " AND " + rValue + " = ";
                     break;
                 case '|':
                     // OR 연산 수행
                     txtResult.Text = (lValue | rValue).ToString();
+                    txtExp.Text = lValue + " OR " + rValue + " = ";
                     break;
                 case '~':
                     // NOT 연산 수행
                     txtResult.Text = (~lValue).ToString();
+                    txtExp.Text = "NOT(" + lValue + ")";
                     break;
                 case '@':
                     // NAND 연산 수행
                     txtResult.Text = (~(lValue & rValue)).ToString();
+                    txtExp.Text = lValue + " NAND " + rValue + " = ";
                     break;
                 case '#':
                     // NOR 연산 수행
                     txtResult.Text = (~(lValue | rValue)).ToString();
+                    txtExp.Text = lValue + " NOR " + rValue + " = ";
                     break;
                 case '$':
                     // XOR 연산 수행
                     txtResult.Text = (lValue ^ rValue).ToString();
+                    txtExp.Text = lValue + " XOR " + rValue + " = ";
                     break;
             }
-            txtExp.Text = "";
+            //txtExp.Text = txtExp.Text + rValue + "=";
             Console.WriteLine("컨버팅 넘버:" + ConvertingNum);
             Console.WriteLine("왼쪽 값:" + lValue);
             Console.WriteLine("오른쪽 값:" + rValue);
@@ -833,7 +853,7 @@ namespace Calculator3
 
             // 새로운 라운드 패널 생성
             dynamicPanel = new RoundedPanel();
-            dynamicPanel.Size = new Size(200, 100); // 패널의 크기 설정
+            dynamicPanel.Size = new Size(210, 100); // 패널의 크기 설정
 
             dynamicPanel.BackColor = Color.FromArgb(243, 243, 243);
 
@@ -858,7 +878,8 @@ namespace Calculator3
                     dynamicButton.Location = new Point(col * 66 + 3, row * 49 + 1);
                     dynamicButton.FlatStyle = FlatStyle.Flat;
                     dynamicButton.Padding = new Padding(2);
-                    dynamicButton.Name = $"btnDynamic{row * 3 + col + 1}";
+                   
+                    dynamicButton.Name = "btnDynamic"+ (row * 3 + col + 1);
 
                     // Owner Drawn 설정
                     dynamicButton.FlatStyle = FlatStyle.Flat;
@@ -938,6 +959,7 @@ namespace Calculator3
                     // NOT 연산 수행
                     lValue = long.Parse(ConvertingNum);
                     txtExp.Text = "NOT("+ txtResult.Text + ")";
+                    txtResult.Text = (~lValue).ToString();
                     op = '~';
                     opFlag = true;
                     dynamicPanel.Visible = false;
@@ -1060,5 +1082,16 @@ namespace Calculator3
             splitContainer1.Panel2.HorizontalScroll.Visible = false;
 
         }
+
+        private void btnLsh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRsh_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }
