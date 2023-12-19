@@ -41,7 +41,7 @@ namespace Calculator3
         int y6;
         int y7;
         int shiftCount;
-
+        public Panel memoryPanel; // 클래스 레벨에서 선언
 
         public Form2()
         {
@@ -85,9 +85,10 @@ namespace Calculator3
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel1);
 
             // NumberButtonClickHandler 클래스의 인스턴스를 생성하고 필요한 컨트롤을 전달
-            numberButtonClickHandler = new NumberButtonClickHandler(txtResult, btnHEX, btnDEC, btnOCT, btnBIN, temporary, txtExp);
+            numberButtonClickHandler = new NumberButtonClickHandler(txtResult, btnHEX, btnDEC, btnOCT, btnBIN, temporary, txtExp, memoryPanel);
 
             InitializeDynamicPanel();
+            
 
         }
         
@@ -123,6 +124,8 @@ namespace Calculator3
                 splitContainer1.Panel2Collapsed = false;
                 splitContainer1.SplitterDistance = this.Width - 350; // splitContainer.Panel1의 크기를 동적으로 조절
                 isPanel2Visible = true;
+                splitContainer1.Panel2.Controls.Add(memoryBottomPanel);
+                memoryBottomPanel.Controls.Add(BtnRemoveMemory);
             }
             else
             {
@@ -202,6 +205,8 @@ namespace Calculator3
             btnDEC.Text = "DEC  0";
             btnOCT.Text = "OCT  0";
             btnBIN.Text = "BIN  0000";
+
+
 
         }
 
@@ -431,7 +436,7 @@ namespace Calculator3
 
             txtResult.SelectionStart = txtResult.Text.Length;
             dynamicPanel.Location = new Point(1, y7); // 패널의 위치 설정
-
+      
         }
 
         long decimalValue = 0;
@@ -713,7 +718,7 @@ namespace Calculator3
         private void btnResult_Click(object sender, EventArgs e)
         {
             rValue = long.Parse(ConvertingNum);
-            shiftCount = Convert.ToInt32(rValue);
+            
             if (temporary.Text == "0으로 나눌 수 없습니다")
             {
                this.btnAllClear.PerformClick();
@@ -812,6 +817,7 @@ namespace Calculator3
                     resultFlag = true;
                     break;
                 case '<':
+                    shiftCount = Convert.ToInt32(rValue);
                     // rValue를 왼쪽으로 시프트
                     lValue <<= shiftCount;
 
@@ -822,12 +828,13 @@ namespace Calculator3
                     resultFlag = true;
                     break;
                 case '>':
-                    // rValue를 왼쪽으로 시프트
+                    shiftCount = Convert.ToInt32(rValue);
+                    // rValue를 오른쪽으로 시프트
                     lValue >>= shiftCount;
 
                     // 결과를 텍스트 상자에 표시
                     txtResult.Text = lValue.ToString();
-                    txtExp.Text += rValue + " = ";
+                    txtExp.Text += lValue + "Rsh" + rValue + " = ";
                     opFlag = true;
                     resultFlag = true;
                     break;
@@ -1103,13 +1110,12 @@ namespace Calculator3
             txtResult.Text = ((Button)sender).Text;
         }
 
-        private Panel memoryPanel; // 클래스 레벨에서 선언
+        
 
         private void btnMS_Click(object sender, EventArgs e)
         {
             memoryStateLabel.Visible = false;
-            // Panel2의 스크롤을 최상단으로 이동
-            splitContainer1.Panel2.VerticalScroll.Value = 0;
+            
 
             memory = txtResult.Text;
             btnMhistory.Enabled = true;
@@ -1119,7 +1125,7 @@ namespace Calculator3
             if (memoryPanel == null)
             {
                 memoryPanel = new Panel();
-                memoryPanel.Dock = DockStyle.Top;
+                memoryPanel.Dock = DockStyle.Fill;
                 memoryPanel.Size = new Size(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height*82/100);
                 memoryPanel.AutoScroll = true;
 
@@ -1127,7 +1133,12 @@ namespace Calculator3
 
                 splitContainer1.Panel2.Controls.Add(memoryPanel);
                 splitContainer1.Panel2.Controls.Add(btnMemoryTitle);
+
+                
             }
+            int ScrollValue = memoryPanel.VerticalScroll.Value;
+
+            memoryPanel.VerticalScroll.Value = 0;
 
             // Button을 생성하고 속성 설정
             Button btnMemory = new Button();
@@ -1144,7 +1155,7 @@ namespace Calculator3
             btnYCoordinate -= btnMemory.Height + btnHeightOffset;
 
             // 가장 위 버튼의 Y좌표가 0 미만이면 0으로 설정
-            if (btnYCoordinate < 0)
+            if (btnYCoordinate <= 0)
             {
                 btnYCoordinate = 0;
             }

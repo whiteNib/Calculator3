@@ -81,6 +81,7 @@
             this.btnDEC = new System.Windows.Forms.Button();
             this.btnHEX = new System.Windows.Forms.Button();
             this.temporary = new System.Windows.Forms.TextBox();
+            this.memoryStateLabel = new System.Windows.Forms.Label();
             this.btnMemoryTitle = new System.Windows.Forms.Button();
             this.flowLayoutPanelBits8 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanelBits7 = new System.Windows.Forms.TableLayoutPanel();
@@ -159,9 +160,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.memoryStateLabel = new System.Windows.Forms.Label();
+            this.memoryBottomPanel = new System.Windows.Forms.Panel();
+            this.BtnRemoveMemory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -178,6 +179,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.memoryBottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -205,6 +207,7 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.splitContainer1.Panel2.Controls.Add(this.memoryBottomPanel);
             this.splitContainer1.Panel2.Controls.Add(this.memoryStateLabel);
             this.splitContainer1.Panel2.Controls.Add(this.btnMemoryTitle);
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanelBits8);
@@ -220,10 +223,9 @@
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox3);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox2);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer1.Size = new System.Drawing.Size(475, 329);
-            this.splitContainer1.SplitterDistance = 225;
+            this.splitContainer1.SplitterDistance = 226;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -236,7 +238,7 @@
             this.txtExp.ForeColor = System.Drawing.Color.Gray;
             this.txtExp.Location = new System.Drawing.Point(0, 0);
             this.txtExp.Name = "txtExp";
-            this.txtExp.Size = new System.Drawing.Size(225, 22);
+            this.txtExp.Size = new System.Drawing.Size(226, 22);
             this.txtExp.TabIndex = 37;
             this.txtExp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -246,7 +248,7 @@
             this.txtResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.txtResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtResult.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtResult.Location = new System.Drawing.Point(12, 20);
+            this.txtResult.Location = new System.Drawing.Point(5, 20);
             this.txtResult.Margin = new System.Windows.Forms.Padding(3, 3, 0, 13);
             this.txtResult.MaxLength = 60000;
             this.txtResult.Name = "txtResult";
@@ -334,7 +336,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(223, 154);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(224, 154);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnResult
@@ -351,7 +353,7 @@
             this.btnResult.Location = new System.Drawing.Point(177, 126);
             this.btnResult.Margin = new System.Windows.Forms.Padding(1);
             this.btnResult.Name = "btnResult";
-            this.btnResult.Size = new System.Drawing.Size(45, 27);
+            this.btnResult.Size = new System.Drawing.Size(46, 27);
             this.btnResult.TabIndex = 29;
             this.btnResult.Text = "=";
             this.btnResult.UseVisualStyleBackColor = true;
@@ -436,7 +438,7 @@
             this.btnAdd.Location = new System.Drawing.Point(177, 101);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(1);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(45, 23);
+            this.btnAdd.Size = new System.Drawing.Size(46, 23);
             this.btnAdd.TabIndex = 24;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -523,7 +525,7 @@
             this.btnSubtract.Margin = new System.Windows.Forms.Padding(1);
             this.btnSubtract.Name = "btnSubtract";
             this.btnSubtract.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.btnSubtract.Size = new System.Drawing.Size(45, 23);
+            this.btnSubtract.Size = new System.Drawing.Size(46, 23);
             this.btnSubtract.TabIndex = 19;
             this.btnSubtract.Text = "-";
             this.btnSubtract.UseVisualStyleBackColor = true;
@@ -609,7 +611,7 @@
             this.btnMultiply.Location = new System.Drawing.Point(177, 51);
             this.btnMultiply.Margin = new System.Windows.Forms.Padding(1);
             this.btnMultiply.Name = "btnMultiply";
-            this.btnMultiply.Size = new System.Drawing.Size(45, 23);
+            this.btnMultiply.Size = new System.Drawing.Size(46, 23);
             this.btnMultiply.TabIndex = 14;
             this.btnMultiply.Text = "×";
             this.btnMultiply.UseVisualStyleBackColor = true;
@@ -695,7 +697,7 @@
             this.btnDivide.Location = new System.Drawing.Point(177, 26);
             this.btnDivide.Margin = new System.Windows.Forms.Padding(1);
             this.btnDivide.Name = "btnDivide";
-            this.btnDivide.Size = new System.Drawing.Size(45, 23);
+            this.btnDivide.Size = new System.Drawing.Size(46, 23);
             this.btnDivide.TabIndex = 9;
             this.btnDivide.Text = "÷";
             this.btnDivide.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -778,7 +780,7 @@
             this.btnDelete.Location = new System.Drawing.Point(177, 1);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(1);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(45, 23);
+            this.btnDelete.Size = new System.Drawing.Size(46, 23);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "⌫";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -867,7 +869,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(223, 27);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(224, 27);
             this.tableLayoutPanel2.TabIndex = 30;
             // 
             // button32
@@ -882,7 +884,7 @@
             this.button32.Location = new System.Drawing.Point(51, 2);
             this.button32.Margin = new System.Windows.Forms.Padding(2);
             this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(71, 23);
+            this.button32.Size = new System.Drawing.Size(72, 23);
             this.button32.TabIndex = 1;
             this.button32.UseVisualStyleBackColor = true;
             // 
@@ -1030,7 +1032,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(223, 54);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(224, 54);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // btnBIN
@@ -1046,7 +1048,7 @@
             this.btnBIN.Location = new System.Drawing.Point(0, 39);
             this.btnBIN.Margin = new System.Windows.Forms.Padding(0);
             this.btnBIN.Name = "btnBIN";
-            this.btnBIN.Size = new System.Drawing.Size(223, 15);
+            this.btnBIN.Size = new System.Drawing.Size(224, 15);
             this.btnBIN.TabIndex = 3;
             this.btnBIN.Text = "BIN";
             this.btnBIN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1066,7 +1068,7 @@
             this.btnOCT.Location = new System.Drawing.Point(0, 26);
             this.btnOCT.Margin = new System.Windows.Forms.Padding(0);
             this.btnOCT.Name = "btnOCT";
-            this.btnOCT.Size = new System.Drawing.Size(223, 13);
+            this.btnOCT.Size = new System.Drawing.Size(224, 13);
             this.btnOCT.TabIndex = 2;
             this.btnOCT.Text = "OCT";
             this.btnOCT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1086,7 +1088,7 @@
             this.btnDEC.Location = new System.Drawing.Point(0, 13);
             this.btnDEC.Margin = new System.Windows.Forms.Padding(0);
             this.btnDEC.Name = "btnDEC";
-            this.btnDEC.Size = new System.Drawing.Size(223, 13);
+            this.btnDEC.Size = new System.Drawing.Size(224, 13);
             this.btnDEC.TabIndex = 1;
             this.btnDEC.Text = "DEC";
             this.btnDEC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1106,7 +1108,7 @@
             this.btnHEX.Location = new System.Drawing.Point(2, 0);
             this.btnHEX.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.btnHEX.Name = "btnHEX";
-            this.btnHEX.Size = new System.Drawing.Size(219, 13);
+            this.btnHEX.Size = new System.Drawing.Size(220, 13);
             this.btnHEX.TabIndex = 0;
             this.btnHEX.Text = "HEX";
             this.btnHEX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1126,6 +1128,18 @@
             this.temporary.TabIndex = 30;
             this.temporary.Text = "0";
             this.temporary.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // memoryStateLabel
+            // 
+            this.memoryStateLabel.AutoSize = true;
+            this.memoryStateLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.memoryStateLabel.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.memoryStateLabel.Location = new System.Drawing.Point(0, 48);
+            this.memoryStateLabel.Name = "memoryStateLabel";
+            this.memoryStateLabel.Size = new System.Drawing.Size(226, 21);
+            this.memoryStateLabel.TabIndex = 31;
+            this.memoryStateLabel.Text = " 메모리에 저장된 내용이 없음";
+            this.memoryStateLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // btnMemoryTitle
             // 
@@ -1162,7 +1176,7 @@
             this.flowLayoutPanelBits8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.309167F));
             this.flowLayoutPanelBits8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.072305F));
             this.flowLayoutPanelBits8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits8.Location = new System.Drawing.Point(0, 329);
+            this.flowLayoutPanelBits8.Location = new System.Drawing.Point(0, 364);
             this.flowLayoutPanelBits8.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelBits8.Name = "flowLayoutPanelBits8";
             this.flowLayoutPanelBits8.RowCount = 1;
@@ -1207,7 +1221,7 @@
             this.flowLayoutPanelBits7.Controls.Add(this.label18, 0, 0);
             this.flowLayoutPanelBits7.Controls.Add(this.label19, 15, 0);
             this.flowLayoutPanelBits7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits7.Location = new System.Drawing.Point(0, 347);
+            this.flowLayoutPanelBits7.Location = new System.Drawing.Point(0, 382);
             this.flowLayoutPanelBits7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits7.Name = "flowLayoutPanelBits7";
             this.flowLayoutPanelBits7.RowCount = 2;
@@ -1422,7 +1436,7 @@
             this.flowLayoutPanelBits6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.309167F));
             this.flowLayoutPanelBits6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.072305F));
             this.flowLayoutPanelBits6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits6.Location = new System.Drawing.Point(0, 365);
+            this.flowLayoutPanelBits6.Location = new System.Drawing.Point(0, 400);
             this.flowLayoutPanelBits6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits6.Name = "flowLayoutPanelBits6";
             this.flowLayoutPanelBits6.RowCount = 1;
@@ -1467,7 +1481,7 @@
             this.flowLayoutPanelBits5.Controls.Add(this.label34, 0, 0);
             this.flowLayoutPanelBits5.Controls.Add(this.label35, 0, 0);
             this.flowLayoutPanelBits5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits5.Location = new System.Drawing.Point(0, 383);
+            this.flowLayoutPanelBits5.Location = new System.Drawing.Point(0, 418);
             this.flowLayoutPanelBits5.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits5.Name = "flowLayoutPanelBits5";
             this.flowLayoutPanelBits5.RowCount = 1;
@@ -1704,7 +1718,7 @@
             this.flowLayoutPanelBits4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.309167F));
             this.flowLayoutPanelBits4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.072305F));
             this.flowLayoutPanelBits4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits4.Location = new System.Drawing.Point(0, 401);
+            this.flowLayoutPanelBits4.Location = new System.Drawing.Point(0, 436);
             this.flowLayoutPanelBits4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits4.Name = "flowLayoutPanelBits4";
             this.flowLayoutPanelBits4.RowCount = 1;
@@ -1749,7 +1763,7 @@
             this.flowLayoutPanelBits3.Controls.Add(this.label50, 0, 0);
             this.flowLayoutPanelBits3.Controls.Add(this.label51, 0, 0);
             this.flowLayoutPanelBits3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits3.Location = new System.Drawing.Point(0, 419);
+            this.flowLayoutPanelBits3.Location = new System.Drawing.Point(0, 454);
             this.flowLayoutPanelBits3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits3.Name = "flowLayoutPanelBits3";
             this.flowLayoutPanelBits3.RowCount = 1;
@@ -1976,7 +1990,7 @@
             this.flowLayoutPanelBits2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.309167F));
             this.flowLayoutPanelBits2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.072305F));
             this.flowLayoutPanelBits2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits2.Location = new System.Drawing.Point(0, 437);
+            this.flowLayoutPanelBits2.Location = new System.Drawing.Point(0, 472);
             this.flowLayoutPanelBits2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits2.Name = "flowLayoutPanelBits2";
             this.flowLayoutPanelBits2.RowCount = 1;
@@ -2021,7 +2035,7 @@
             this.flowLayoutPanelBits1.Controls.Add(this.label66, 0, 0);
             this.flowLayoutPanelBits1.Controls.Add(this.label67, 0, 0);
             this.flowLayoutPanelBits1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits1.Location = new System.Drawing.Point(0, 455);
+            this.flowLayoutPanelBits1.Location = new System.Drawing.Point(0, 490);
             this.flowLayoutPanelBits1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits1.Name = "flowLayoutPanelBits1";
             this.flowLayoutPanelBits1.RowCount = 1;
@@ -2272,32 +2286,29 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(0, 473);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 35);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.BtnRemoveMemory_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // memoryStateLabel
+            // memoryBottomPanel
             // 
-            this.memoryStateLabel.AutoSize = true;
-            this.memoryStateLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.memoryStateLabel.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.memoryStateLabel.Location = new System.Drawing.Point(0, 48);
-            this.memoryStateLabel.Name = "memoryStateLabel";
-            this.memoryStateLabel.Size = new System.Drawing.Size(226, 21);
-            this.memoryStateLabel.TabIndex = 31;
-            this.memoryStateLabel.Text = " 메모리에 저장된 내용이 없음";
-            this.memoryStateLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.memoryBottomPanel.Controls.Add(this.BtnRemoveMemory);
+            this.memoryBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.memoryBottomPanel.Location = new System.Drawing.Point(0, 329);
+            this.memoryBottomPanel.Name = "memoryBottomPanel";
+            this.memoryBottomPanel.Size = new System.Drawing.Size(240, 35);
+            this.memoryBottomPanel.TabIndex = 32;
+            // 
+            // BtnRemoveMemory
+            // 
+            this.BtnRemoveMemory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnRemoveMemory.Location = new System.Drawing.Point(205, 0);
+            this.BtnRemoveMemory.Name = "BtnRemoveMemory";
+            this.BtnRemoveMemory.Size = new System.Drawing.Size(35, 35);
+            this.BtnRemoveMemory.TabIndex = 0;
+            this.BtnRemoveMemory.Text = "Delete";
+            this.BtnRemoveMemory.UseVisualStyleBackColor = true;
+            this.BtnRemoveMemory.Click += new System.EventHandler(this.BtnRemoveMemory_Click);
             // 
             // Form2
             // 
@@ -2336,6 +2347,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.memoryBottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2473,7 +2485,8 @@
         private System.Windows.Forms.TextBox txtExp;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnMemoryTitle;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label memoryStateLabel;
+        private System.Windows.Forms.Panel memoryBottomPanel;
+        private System.Windows.Forms.Button BtnRemoveMemory;
     }
 }

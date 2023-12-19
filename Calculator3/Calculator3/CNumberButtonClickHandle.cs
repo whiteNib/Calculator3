@@ -47,7 +47,7 @@ namespace Calculator3
         public bool opFlag = false;
         public bool memFlag = false;
         public bool resultFlag = false;
-        public NumberButtonClickHandler(TextBox txtResult, Button btnHEX, Button btnDEC, Button btnOCT, Button btnBIN, TextBox temporary, TextBox txtExp)
+        public NumberButtonClickHandler(TextBox txtResult, Button btnHEX, Button btnDEC, Button btnOCT, Button btnBIN, TextBox temporary, TextBox txtExp, Panel memoryPanel)
         {
             this.txtResult = txtResult;
             this.btnHEX = btnHEX;
