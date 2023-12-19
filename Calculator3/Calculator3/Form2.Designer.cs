@@ -67,7 +67,7 @@
             this.btnLsh = new System.Windows.Forms.Button();
             this.btnA = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button32 = new System.Windows.Forms.Button();
+            this.btnBitShift = new System.Windows.Forms.Button();
             this.btnBIT = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnMhistory = new System.Windows.Forms.Button();
@@ -81,6 +81,8 @@
             this.btnDEC = new System.Windows.Forms.Button();
             this.btnHEX = new System.Windows.Forms.Button();
             this.temporary = new System.Windows.Forms.TextBox();
+            this.memoryBottomPanel = new System.Windows.Forms.Panel();
+            this.btnRemoveMemory = new System.Windows.Forms.Button();
             this.memoryStateLabel = new System.Windows.Forms.Label();
             this.btnMemoryTitle = new System.Windows.Forms.Button();
             this.flowLayoutPanelBits8 = new System.Windows.Forms.TableLayoutPanel();
@@ -161,8 +163,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.memoryBottomPanel = new System.Windows.Forms.Panel();
-            this.BtnRemoveMemory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -171,6 +171,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.memoryBottomPanel.SuspendLayout();
             this.flowLayoutPanelBits7.SuspendLayout();
             this.flowLayoutPanelBits5.SuspendLayout();
             this.flowLayoutPanelBits3.SuspendLayout();
@@ -179,7 +180,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.memoryBottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -862,7 +862,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.00003F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.99999F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.99998F));
-            this.tableLayoutPanel2.Controls.Add(this.button32, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnBitShift, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnBIT, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 146);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -872,21 +872,21 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(224, 27);
             this.tableLayoutPanel2.TabIndex = 30;
             // 
-            // button32
+            // btnBitShift
             // 
-            this.button32.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnBitShift.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button32.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.button32.FlatAppearance.BorderSize = 0;
-            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Image = ((System.Drawing.Image)(resources.GetObject("button32.Image")));
-            this.button32.Location = new System.Drawing.Point(51, 2);
-            this.button32.Margin = new System.Windows.Forms.Padding(2);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(72, 23);
-            this.button32.TabIndex = 1;
-            this.button32.UseVisualStyleBackColor = true;
+            this.btnBitShift.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnBitShift.FlatAppearance.BorderSize = 0;
+            this.btnBitShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBitShift.Image = ((System.Drawing.Image)(resources.GetObject("btnBitShift.Image")));
+            this.btnBitShift.Location = new System.Drawing.Point(51, 2);
+            this.btnBitShift.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBitShift.Name = "btnBitShift";
+            this.btnBitShift.Size = new System.Drawing.Size(72, 23);
+            this.btnBitShift.TabIndex = 1;
+            this.btnBitShift.UseVisualStyleBackColor = true;
             // 
             // btnBIT
             // 
@@ -1128,6 +1128,29 @@
             this.temporary.TabIndex = 30;
             this.temporary.Text = "0";
             this.temporary.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // memoryBottomPanel
+            // 
+            this.memoryBottomPanel.Controls.Add(this.btnRemoveMemory);
+            this.memoryBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.memoryBottomPanel.Location = new System.Drawing.Point(0, 329);
+            this.memoryBottomPanel.Name = "memoryBottomPanel";
+            this.memoryBottomPanel.Size = new System.Drawing.Size(240, 35);
+            this.memoryBottomPanel.TabIndex = 32;
+            // 
+            // btnRemoveMemory
+            // 
+            this.btnRemoveMemory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnRemoveMemory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnRemoveMemory.FlatAppearance.BorderSize = 0;
+            this.btnRemoveMemory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveMemory.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveMemory.Image")));
+            this.btnRemoveMemory.Location = new System.Drawing.Point(205, 0);
+            this.btnRemoveMemory.Name = "btnRemoveMemory";
+            this.btnRemoveMemory.Size = new System.Drawing.Size(35, 35);
+            this.btnRemoveMemory.TabIndex = 0;
+            this.btnRemoveMemory.UseVisualStyleBackColor = true;
+            this.btnRemoveMemory.Click += new System.EventHandler(this.btnRemoveMemory_Click);
             // 
             // memoryStateLabel
             // 
@@ -2290,26 +2313,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // memoryBottomPanel
-            // 
-            this.memoryBottomPanel.Controls.Add(this.BtnRemoveMemory);
-            this.memoryBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.memoryBottomPanel.Location = new System.Drawing.Point(0, 329);
-            this.memoryBottomPanel.Name = "memoryBottomPanel";
-            this.memoryBottomPanel.Size = new System.Drawing.Size(240, 35);
-            this.memoryBottomPanel.TabIndex = 32;
-            // 
-            // BtnRemoveMemory
-            // 
-            this.BtnRemoveMemory.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnRemoveMemory.Location = new System.Drawing.Point(205, 0);
-            this.BtnRemoveMemory.Name = "BtnRemoveMemory";
-            this.BtnRemoveMemory.Size = new System.Drawing.Size(35, 35);
-            this.BtnRemoveMemory.TabIndex = 0;
-            this.BtnRemoveMemory.Text = "Delete";
-            this.BtnRemoveMemory.UseVisualStyleBackColor = true;
-            this.BtnRemoveMemory.Click += new System.EventHandler(this.BtnRemoveMemory_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -2335,6 +2338,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.memoryBottomPanel.ResumeLayout(false);
             this.flowLayoutPanelBits7.ResumeLayout(false);
             this.flowLayoutPanelBits7.PerformLayout();
             this.flowLayoutPanelBits5.ResumeLayout(false);
@@ -2347,7 +2351,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.memoryBottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2388,7 +2391,7 @@
         private System.Windows.Forms.Button btnLsh;
         private System.Windows.Forms.Button btnA;
         
-        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button btnBitShift;
         private System.Windows.Forms.Button btnBIT;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnMS;
@@ -2487,6 +2490,6 @@
         private System.Windows.Forms.Button btnMemoryTitle;
         private System.Windows.Forms.Label memoryStateLabel;
         private System.Windows.Forms.Panel memoryBottomPanel;
-        private System.Windows.Forms.Button BtnRemoveMemory;
+        private System.Windows.Forms.Button btnRemoveMemory;
     }
 }

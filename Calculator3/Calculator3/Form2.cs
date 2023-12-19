@@ -125,7 +125,7 @@ namespace Calculator3
                 splitContainer1.SplitterDistance = this.Width - 350; // splitContainer.Panel1의 크기를 동적으로 조절
                 isPanel2Visible = true;
                 splitContainer1.Panel2.Controls.Add(memoryBottomPanel);
-                memoryBottomPanel.Controls.Add(BtnRemoveMemory);
+                memoryBottomPanel.Controls.Add(btnRemoveMemory);
             }
             else
             {
@@ -1110,46 +1110,40 @@ namespace Calculator3
             txtResult.Text = ((Button)sender).Text;
         }
 
-        
-
         private void btnMS_Click(object sender, EventArgs e)
         {
             memoryStateLabel.Visible = false;
-            
 
             memory = txtResult.Text;
             btnMhistory.Enabled = true;
             memFlag = true;
 
-            // 최초 클릭 시 패널 생성
+            // memoryPanel이 없으면 생성
             if (memoryPanel == null)
             {
                 memoryPanel = new Panel();
                 memoryPanel.Dock = DockStyle.Fill;
-                memoryPanel.Size = new Size(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height*82/100);
+                memoryPanel.Size = new Size(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height * 82 / 100);
                 memoryPanel.AutoScroll = true;
-
-                
 
                 splitContainer1.Panel2.Controls.Add(memoryPanel);
                 splitContainer1.Panel2.Controls.Add(btnMemoryTitle);
-
-                
             }
-            int ScrollValue = memoryPanel.VerticalScroll.Value;
 
+            int ScrollValue = memoryPanel.VerticalScroll.Value;
             memoryPanel.VerticalScroll.Value = 0;
 
             // Button을 생성하고 속성 설정
             Button btnMemory = new Button();
             btnMemory.Text = memory;
-            btnMemory.Size = new Size(310, 60);
+            btnMemory.Size = new Size(320, 60);
             btnMemory.TextAlign = ContentAlignment.TopRight;
             btnMemory.Font = new Font("맑은 고딕", 17, FontStyle.Bold);
             btnMemory.FlatStyle = FlatStyle.Flat;
             btnMemory.FlatAppearance.BorderSize = 0;
             btnMemory.Dock = DockStyle.None; // Dock을 None으로 설정
             btnMemory.AutoSize = true; // AutoSize를 true로 설정하여 내용에 맞게 크기 조절
+            btnMemory.SendToBack();
 
             // y 좌표를 업데이트하여 다음 Button이 겹치지 않도록 함
             btnYCoordinate -= btnMemory.Height + btnHeightOffset;
@@ -1175,20 +1169,62 @@ namespace Calculator3
             }
 
             btnMemory.Click += ButtonMemory_Click;
-            // 가로 스크롤 비활성화
+            btnMemory.MouseEnter += btnMemory_MouseEnter;  // 추가: 호버 이벤트 핸들러 연결
+                                                           // 가로 스크롤 비활성화
             splitContainer1.Panel2.HorizontalScroll.Enabled = false;
             splitContainer1.Panel2.HorizontalScroll.Visible = false;
         }
-        private void BtnRemoveMemory_Click(object sender, EventArgs e)
+
+        private void btnMemory_MouseEnter(object sender, EventArgs e)
+        {
+            // 디버깅을 위한 출력
+            Console.WriteLine("btnMemory_MouseEnter event fired!");
+
+            // 호버 시 오른쪽 아래에 새로운 버튼 추가
+            Button btnHover = new Button();
+            btnHover.Text = "0";
+            btnHover.Size = new Size(100, 30);
+            btnHover.Visible = true;
+            splitContainer1.Panel2.Controls.Add(btnHover);
+            memoryPanel.Controls.Add(btnHover);
+            btnMemoryTitle.Controls.Add(btnHover);
+            btnHover.BringToFront();
+            if (!memoryPanel.Controls.Contains(btnHover))
+            {
+                memoryPanel.Controls.Add(btnHover);
+            }
+            // btnMemory의 위치와 크기를 고려하여 위치 계산
+            btnHover.Location = new Point(((Button)sender).Location.X + ((Button)sender).Width - btnHover.Width, ((Button)sender).Location.Y + ((Button)sender).Height - btnHover.Height);
+
+            // 디버깅을 위한 출력
+            Console.WriteLine($"btnHover Location: {btnHover.Location}");
+
+            memoryPanel.Controls.Add(btnHover);
+
+            // 추가된 버튼에 대한 이벤트 핸들러 등록
+            btnHover.MouseLeave += (s, ev) =>
+            {
+                // 디버깅을 위한 출력
+                Console.WriteLine("btnHover MouseLeave event fired!");
+
+                memoryPanel.Controls.Remove(btnHover);
+            };
+        }
+
+        private void btnRemoveMemory_Click(object sender, EventArgs e)
         {
             if (memoryPanel != null)
             {
                 // 모든 버튼 제거
                 memoryPanel.Controls.Clear();
+                memoryPanel.Dock = DockStyle.None;  // 수정: DockStyle.Fill에서 초기화
                 memoryStateLabel.Visible = true;
                 memoryStateLabel.Dock = DockStyle.Top;
                 splitContainer1.Panel2.Controls.Remove(memoryPanel);
+                memoryPanel = null;  // 추가: memoryPanel을 null로 초기화
             }
         }
+
+
     }
 }
