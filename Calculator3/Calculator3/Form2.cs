@@ -834,7 +834,7 @@ namespace Calculator3
 
                     // 결과를 텍스트 상자에 표시
                     txtResult.Text = lValue.ToString();
-                    txtExp.Text += lValue + "Rsh" + rValue + " = ";
+                    txtExp.Text += rValue + " = ";
                     opFlag = true;
                     resultFlag = true;
                     break;

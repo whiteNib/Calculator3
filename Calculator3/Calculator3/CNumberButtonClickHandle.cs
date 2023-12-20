@@ -83,7 +83,7 @@ namespace Calculator3
                     // 현재 값에 숫자를 추가
                     result = result * 10 + number;
 
-                    if (result <= long.MaxValue && result.ToString().Length <= 18)
+                    if (result <= long.MaxValue && result.ToString().Length <= 19)
                     {
                         // 오버플로우가 발생하지 않으면 변환 후 텍스트 설정
                         txtResult.Text = result.ToString();

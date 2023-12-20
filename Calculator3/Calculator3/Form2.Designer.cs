@@ -207,6 +207,7 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanelBits1);
             this.splitContainer1.Panel2.Controls.Add(this.memoryBottomPanel);
             this.splitContainer1.Panel2.Controls.Add(this.memoryStateLabel);
             this.splitContainer1.Panel2.Controls.Add(this.btnMemoryTitle);
@@ -217,12 +218,11 @@
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanelBits4);
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanelBits3);
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanelBits2);
-            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanelBits1);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBox4);
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox3);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox4);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer1.Size = new System.Drawing.Size(475, 329);
             this.splitContainer1.SplitterDistance = 226;
@@ -1133,7 +1133,7 @@
             // 
             this.memoryBottomPanel.Controls.Add(this.btnRemoveMemory);
             this.memoryBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.memoryBottomPanel.Location = new System.Drawing.Point(0, 329);
+            this.memoryBottomPanel.Location = new System.Drawing.Point(0, 347);
             this.memoryBottomPanel.Name = "memoryBottomPanel";
             this.memoryBottomPanel.Size = new System.Drawing.Size(240, 35);
             this.memoryBottomPanel.TabIndex = 32;
@@ -1199,7 +1199,7 @@
             this.flowLayoutPanelBits8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.309167F));
             this.flowLayoutPanelBits8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.072305F));
             this.flowLayoutPanelBits8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits8.Location = new System.Drawing.Point(0, 364);
+            this.flowLayoutPanelBits8.Location = new System.Drawing.Point(0, 382);
             this.flowLayoutPanelBits8.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelBits8.Name = "flowLayoutPanelBits8";
             this.flowLayoutPanelBits8.RowCount = 1;
@@ -1244,7 +1244,7 @@
             this.flowLayoutPanelBits7.Controls.Add(this.label18, 0, 0);
             this.flowLayoutPanelBits7.Controls.Add(this.label19, 15, 0);
             this.flowLayoutPanelBits7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits7.Location = new System.Drawing.Point(0, 382);
+            this.flowLayoutPanelBits7.Location = new System.Drawing.Point(0, 400);
             this.flowLayoutPanelBits7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits7.Name = "flowLayoutPanelBits7";
             this.flowLayoutPanelBits7.RowCount = 2;
@@ -1459,7 +1459,7 @@
             this.flowLayoutPanelBits6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.309167F));
             this.flowLayoutPanelBits6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.072305F));
             this.flowLayoutPanelBits6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits6.Location = new System.Drawing.Point(0, 400);
+            this.flowLayoutPanelBits6.Location = new System.Drawing.Point(0, 418);
             this.flowLayoutPanelBits6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits6.Name = "flowLayoutPanelBits6";
             this.flowLayoutPanelBits6.RowCount = 1;
@@ -1504,7 +1504,7 @@
             this.flowLayoutPanelBits5.Controls.Add(this.label34, 0, 0);
             this.flowLayoutPanelBits5.Controls.Add(this.label35, 0, 0);
             this.flowLayoutPanelBits5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits5.Location = new System.Drawing.Point(0, 418);
+            this.flowLayoutPanelBits5.Location = new System.Drawing.Point(0, 436);
             this.flowLayoutPanelBits5.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits5.Name = "flowLayoutPanelBits5";
             this.flowLayoutPanelBits5.RowCount = 1;
@@ -1741,7 +1741,7 @@
             this.flowLayoutPanelBits4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.309167F));
             this.flowLayoutPanelBits4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.072305F));
             this.flowLayoutPanelBits4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits4.Location = new System.Drawing.Point(0, 436);
+            this.flowLayoutPanelBits4.Location = new System.Drawing.Point(0, 454);
             this.flowLayoutPanelBits4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits4.Name = "flowLayoutPanelBits4";
             this.flowLayoutPanelBits4.RowCount = 1;
@@ -1786,7 +1786,7 @@
             this.flowLayoutPanelBits3.Controls.Add(this.label50, 0, 0);
             this.flowLayoutPanelBits3.Controls.Add(this.label51, 0, 0);
             this.flowLayoutPanelBits3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits3.Location = new System.Drawing.Point(0, 454);
+            this.flowLayoutPanelBits3.Location = new System.Drawing.Point(0, 472);
             this.flowLayoutPanelBits3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits3.Name = "flowLayoutPanelBits3";
             this.flowLayoutPanelBits3.RowCount = 1;
@@ -2013,7 +2013,7 @@
             this.flowLayoutPanelBits2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.309167F));
             this.flowLayoutPanelBits2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.072305F));
             this.flowLayoutPanelBits2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits2.Location = new System.Drawing.Point(0, 472);
+            this.flowLayoutPanelBits2.Location = new System.Drawing.Point(0, 490);
             this.flowLayoutPanelBits2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits2.Name = "flowLayoutPanelBits2";
             this.flowLayoutPanelBits2.RowCount = 1;
@@ -2058,7 +2058,7 @@
             this.flowLayoutPanelBits1.Controls.Add(this.label66, 0, 0);
             this.flowLayoutPanelBits1.Controls.Add(this.label67, 0, 0);
             this.flowLayoutPanelBits1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelBits1.Location = new System.Drawing.Point(0, 490);
+            this.flowLayoutPanelBits1.Location = new System.Drawing.Point(0, 329);
             this.flowLayoutPanelBits1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.flowLayoutPanelBits1.Name = "flowLayoutPanelBits1";
             this.flowLayoutPanelBits1.RowCount = 1;
